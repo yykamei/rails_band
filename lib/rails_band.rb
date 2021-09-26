@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_band/version'
+require 'rails_band/configuration'
 require 'rails_band/railtie'
 
 # Rails::Band unsubscribes all default LogSubscribers from Rails Instrumentation API,
