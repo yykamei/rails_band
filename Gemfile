@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
 group :development do
-  gem 'rubocop'
+  gem 'rubocop', require: false
+  gem 'rubocop-minitest', require: false
   gem 'sqlite3'
 end
