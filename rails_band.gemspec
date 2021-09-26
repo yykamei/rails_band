@@ -1,24 +1,23 @@
-require_relative "lib/rails_band/version"
+# frozen_string_literal: true
+
+require_relative 'lib/rails_band/version'
 
 Gem::Specification.new do |spec|
-  spec.name        = "rails_band"
+  spec.name        = 'rails_band'
   spec.version     = RailsBand::VERSION
-  spec.authors     = ["Yutaka Kamei"]
-  spec.email       = ["kamei@yykamei.me"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of RailsBand."
-  spec.description = "TODO: Description of RailsBand."
-  spec.license     = "MIT"
+  spec.authors     = ['Yutaka Kamei']
+  spec.email       = ['kamei@yykamei.me']
+  spec.homepage    = 'https://github.com/yykamei/rails_band'
+  spec.summary     = 'Easy-to-use Rails Instrumentation API'
+  spec.description = 'A Rails plugin to facilitate the use of Rails Instrumentation API.'
+  spec.license     = 'MIT'
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  spec.metadata['homepage_uri'] = spec.homepage
+  spec.metadata['source_code_uri'] = spec.homepage
+  spec.metadata['changelog_uri'] = 'https://github.com/yykamei/rails_band/blob/main/CHANGELOG.md'
 
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.files = Dir['lib/**/*', 'LICENSE', 'Rakefile', 'README.md']
 
-  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
-
-  spec.add_dependency "rails", "~> 6.1.4", ">= 6.1.4.1"
+  spec.required_ruby_version = '>= 2.6', '< 4'
+  spec.add_dependency 'rails', '~> 6.1.4', '>= 6.1.4.1'
 end
