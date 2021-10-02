@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'rails_band/action_controller/event/write_fragment'
 require 'rails_band/action_controller/event/process_action'
 
 module RailsBand
@@ -9,7 +10,7 @@ module RailsBand
       mattr_accessor :consumers
 
       def write_fragment(event)
-        event
+        consumer_of(__method__)&.call(Event::WriteFragment.new(event))
       end
 
       def read_fragment(event)

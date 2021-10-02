@@ -32,7 +32,7 @@ class ProcessActionTest < ActionDispatch::IntegrationTest
 
   test 'returns children' do
     get '/users'
-    assert_equal [], @event.children
+    assert_instance_of Array, @event.children
   end
 
   test 'returns cpu_time' do

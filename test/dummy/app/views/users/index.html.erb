@@ -1,6 +1,6 @@
 <div>
   <h2>List of users</h2>
-  <% @users.each do |user| %>
-    <%= render 'user', locals: { user: user } %>
+  <% cache @users do %>
+    <%= render partial: 'user', collection: @users %>
   <% end %>
 </div>
