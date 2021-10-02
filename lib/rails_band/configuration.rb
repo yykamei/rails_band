@@ -3,8 +3,8 @@
 module RailsBand
   # RailsBand::Configuration is responsible for storing user-specified configuration.
   class Configuration
-    # Consumer is a wrapper of ActiveSupport::HashWithIndifferentAccess, which validates the value on #[]=.
-    class Consumer < ActiveSupport::HashWithIndifferentAccess
+    # Consumers is a wrapper of ActiveSupport::HashWithIndifferentAccess, which validates the value on #[]=.
+    class Consumers < ActiveSupport::HashWithIndifferentAccess
       def []=(key, value)
         unless value.respond_to?(:call)
           raise ArgumentError, "The value for `#{key.inspect}` must have #call: the passed one is `#{value.inspect}`"
@@ -14,11 +14,11 @@ module RailsBand
       end
     end
 
-    # @return [Consumer]
-    attr_reader :consumer
+    # @return [Consumers]
+    attr_reader :consumers
 
     def initialize
-      @consumer = Consumer.new
+      @consumers = Consumers.new
     end
 
     # @param value [Hash, #call]
@@ -32,23 +32,23 @@ module RailsBand
     #
     # @example
     #   config = RailsBand::Configuration.new
-    #   config.consumer = ->(e) { Rails.logger.info(e) }
-    #   config.consumer = {
+    #   config.consumers = ->(e) { Rails.logger.info(e) }
+    #   config.consumers = {
     #     default: ->(e) { Rails.logger.info(e) }
     #     action_controller: ->(e) { Rails.logger.info("ActionController! #{e}") }
     #     'render_template.action_view': ->(e) { Rails.logger.debug("RenderTemplate! #{e}") }
     #   }
     #
     # @see https://guides.rubyonrails.org/active_support_instrumentation.html
-    def consumer=(value)
-      @consumer =
+    def consumers=(value)
+      @consumers =
         case value
         when Hash
-          value.each_with_object(Consumer.new) do |(k, v), c|
+          value.each_with_object(Consumers.new) do |(k, v), c|
             c[k] = v
           end
         else
-          Consumer.new.tap { |c| c[:all] = value }
+          Consumers.new.tap { |c| c[:all] = value }
         end
     end
   end
