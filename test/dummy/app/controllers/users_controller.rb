@@ -28,4 +28,8 @@ class UsersController < ApplicationController
   def destroy
     User.find(params.require(:id)).destroy!
   end
+
+  def flawed
+    raise 'Sorry'
+  end
 end

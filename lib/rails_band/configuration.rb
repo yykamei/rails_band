@@ -48,7 +48,7 @@ module RailsBand
             c[k] = v
           end
         else
-          Consumers.new.tap { |c| c[:all] = value }
+          Consumers.new.tap { |c| c[:default] = value }
         end
     end
   end
