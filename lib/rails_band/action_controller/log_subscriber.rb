@@ -3,6 +3,7 @@
 require 'rails_band/action_controller/event/write_fragment'
 require 'rails_band/action_controller/event/read_fragment'
 require 'rails_band/action_controller/event/expire_fragment'
+require 'rails_band/action_controller/event/exist_fragment'
 require 'rails_band/action_controller/event/process_action'
 
 module RailsBand
@@ -24,7 +25,7 @@ module RailsBand
       end
 
       def exist_fragment?(event)
-        event
+        consumer_of(__method__)&.call(Event::ExistFragment.new(event))
       end
 
       def write_page(event)

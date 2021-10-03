@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    fragment_exist?(@users)
     expire_fragment(@users)
   end
 
