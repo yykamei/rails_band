@@ -2,18 +2,18 @@
 
 require 'test_helper'
 
-class WriteFragmentTest < ActionDispatch::IntegrationTest
+class ReadFragmentTest < ActionDispatch::IntegrationTest
   setup do
     @event = nil
     RailsBand::ActionController::LogSubscriber.consumers = {
-      'write_fragment.action_controller': ->(event) { @event = event }
+      'read_fragment.action_controller': ->(event) { @event = event }
     }
     User.create!(name: 'foo', email: 'foo@example.com')
   end
 
   test 'returns name' do
     get '/users'
-    assert_equal 'write_fragment.action_controller', @event.name
+    assert_equal 'read_fragment.action_controller', @event.name
   end
 
   test 'returns time' do
@@ -56,9 +56,9 @@ class WriteFragmentTest < ActionDispatch::IntegrationTest
     assert_instance_of Float, @event.duration
   end
 
-  test 'returns an instance of WriteFragmentTest' do
+  test 'returns an instance of ReadFragmentTest' do
     get '/users'
-    assert_instance_of RailsBand::ActionController::Event::WriteFragment, @event
+    assert_instance_of RailsBand::ActionController::Event::ReadFragment, @event
   end
 
   test 'returns the cache key' do
