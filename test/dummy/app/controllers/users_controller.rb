@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    expire_fragment(@users)
   end
 
   def create

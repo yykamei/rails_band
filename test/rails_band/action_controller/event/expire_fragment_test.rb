@@ -2,18 +2,18 @@
 
 require 'test_helper'
 
-class ReadFragmentTest < ActionDispatch::IntegrationTest
+class ExpireFragmentTest < ActionDispatch::IntegrationTest
   setup do
     @event = nil
     RailsBand::ActionController::LogSubscriber.consumers = {
-      'read_fragment.action_controller': ->(event) { @event = event }
+      'expire_fragment.action_controller': ->(event) { @event = event }
     }
     User.create!(name: 'foo', email: 'foo@example.com')
   end
 
   test 'returns name' do
     get '/users'
-    assert_equal 'read_fragment.action_controller', @event.name
+    assert_equal 'expire_fragment.action_controller', @event.name
   end
 
   test 'returns time' do
@@ -56,9 +56,9 @@ class ReadFragmentTest < ActionDispatch::IntegrationTest
     assert_instance_of Float, @event.duration
   end
 
-  test 'returns an instance of ReadFragment' do
+  test 'returns an instance of ExpireFragment' do
     get '/users'
-    assert_instance_of RailsBand::ActionController::Event::ReadFragment, @event
+    assert_instance_of RailsBand::ActionController::Event::ExpireFragment, @event
   end
 
   test 'returns the cache key' do
