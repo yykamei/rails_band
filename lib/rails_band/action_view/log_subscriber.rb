@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_band/action_view/event/render_template'
+require 'rails_band/action_view/event/render_partial'
 
 module RailsBand
   module ActionView
@@ -10,6 +11,10 @@ module RailsBand
 
       def render_template(event)
         consumer_of(__method__)&.call(Event::RenderTemplate.new(event))
+      end
+
+      def render_partial(event)
+        consumer_of(__method__)&.call(Event::RenderPartial.new(event))
       end
 
       private

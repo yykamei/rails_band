@@ -1,5 +1,7 @@
 <ul>
-  <li>ID:<strong><%= user.id %></strong></li>
-  <li>Email:<strong><%= user.email %></strong></li>
-  <li>Name:<strong><%= user.name %></strong></li>
+  <% cache user do %>
+    <li>ID:<strong><%= user.id %></strong></li>
+    <li>Email:<strong><%= user.email %></strong></li>
+    <li>Name:<strong><%= user.name %></strong></li>
+  <% end %>
 </ul>
