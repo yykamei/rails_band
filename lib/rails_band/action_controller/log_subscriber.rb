@@ -10,6 +10,7 @@ require 'rails_band/action_controller/event/send_file'
 require 'rails_band/action_controller/event/send_data'
 require 'rails_band/action_controller/event/redirect_to'
 require 'rails_band/action_controller/event/halted_callback'
+require 'rails_band/action_controller/event/unpermitted_parameters'
 
 module RailsBand
   module ActionController
@@ -58,7 +59,7 @@ module RailsBand
       end
 
       def unpermitted_parameters(event)
-        event
+        consumer_of(__method__)&.call(Event::UnpermittedParameters.new(event))
       end
 
       private
