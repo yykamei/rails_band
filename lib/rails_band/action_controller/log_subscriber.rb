@@ -6,6 +6,7 @@ require 'rails_band/action_controller/event/expire_fragment'
 require 'rails_band/action_controller/event/exist_fragment'
 require 'rails_band/action_controller/event/start_processing'
 require 'rails_band/action_controller/event/process_action'
+require 'rails_band/action_controller/event/send_file'
 
 module RailsBand
   module ActionController
@@ -38,7 +39,7 @@ module RailsBand
       end
 
       def send_file(event)
-        event
+        consumer_of(__method__)&.call(Event::SendFile.new(event))
       end
 
       def send_data(event)

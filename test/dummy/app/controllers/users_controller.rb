@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def index
     @users = User.all
@@ -33,5 +35,9 @@ class UsersController < ApplicationController
 
   def flawed
     raise 'Sorry'
+  end
+
+  def data
+    send_file Rails.root.join('public/404.html'), file_name: 'power.html'
   end
 end
