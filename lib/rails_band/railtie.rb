@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'action_controller/log_subscriber'
+require 'action_view/log_subscriber'
 
 module RailsBand
   # RailsBand::Railtie is responsible for preparing its configuration and accepting user-specified configs.
@@ -10,9 +11,14 @@ module RailsBand
     config.after_initialize do |app|
       consumers = app.config.rails_band.consumers
 
-      ::ActionController::LogSubscriber.detach_from :action_controller
-      RailsBand::ActionController::LogSubscriber.consumers = consumers
-      RailsBand::ActionController::LogSubscriber.attach_to :action_controller
+      swap = lambda { |old_class, new_class, namespace|
+        old_class.detach_from namespace
+        new_class.consumers = consumers
+        new_class.attach_to namespace
+      }
+
+      swap.call(::ActionController::LogSubscriber, RailsBand::ActionController::LogSubscriber, :action_controller)
+      swap.call(::ActionView::LogSubscriber, RailsBand::ActionView::LogSubscriber, :action_view)
     end
   end
 end

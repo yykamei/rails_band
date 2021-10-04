@@ -11,4 +11,8 @@ module RailsBand
   module ActionController
     autoload :LogSubscriber, 'rails_band/action_controller/log_subscriber'
   end
+
+  module ActionView
+    autoload :LogSubscriber, 'rails_band/action_view/log_subscriber'
+  end
 end

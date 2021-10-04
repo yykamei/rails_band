@@ -2,30 +2,30 @@
 
 require 'test_helper'
 
-class ActionControllerLogSubscriberTest < ActionDispatch::IntegrationTest
+class ActionViewLogSubscriberTest < ActionDispatch::IntegrationTest
   setup do
     @mock = Minitest::Mock.new
     @mock.expect(:recv, nil)
   end
 
   test 'use the consumer with the exact event name' do
-    RailsBand::ActionController::LogSubscriber.consumers = {
-      'process_action.action_controller': ->(_event) { @mock.recv }
+    RailsBand::ActionView::LogSubscriber.consumers = {
+      'render_template.action_view': ->(_event) { @mock.recv }
     }
     get '/users'
     assert_mock @mock
   end
 
   test 'use the consumer with namespace' do
-    RailsBand::ActionController::LogSubscriber.consumers = {
-      action_controller: ->(_event) { @mock.recv }
+    RailsBand::ActionView::LogSubscriber.consumers = {
+      action_view: ->(_event) { @mock.recv }
     }
     get '/users'
     assert_mock @mock
   end
 
   test 'use the consumer with default' do
-    RailsBand::ActionController::LogSubscriber.consumers = {
+    RailsBand::ActionView::LogSubscriber.consumers = {
       default: ->(_event) { @mock.recv }
     }
     get '/users'
@@ -33,8 +33,8 @@ class ActionControllerLogSubscriberTest < ActionDispatch::IntegrationTest
   end
 
   test 'do not use the consumer because the event is not for the target' do
-    RailsBand::ActionController::LogSubscriber.consumers = {
-      'unknown.action_controller': ->(_event) { @mock.recv }
+    RailsBand::ActionView::LogSubscriber.consumers = {
+      'unknown.action_view': ->(_event) { @mock.recv }
     }
     get '/users'
     assert_raises MockExpectationError do
