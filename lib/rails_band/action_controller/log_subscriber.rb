@@ -8,6 +8,7 @@ require 'rails_band/action_controller/event/start_processing'
 require 'rails_band/action_controller/event/process_action'
 require 'rails_band/action_controller/event/send_file'
 require 'rails_band/action_controller/event/send_data'
+require 'rails_band/action_controller/event/redirect_to'
 
 module RailsBand
   module ActionController
@@ -48,7 +49,7 @@ module RailsBand
       end
 
       def redirect_to(event)
-        event
+        consumer_of(__method__)&.call(Event::RedirectTo.new(event))
       end
 
       def halted_callback(event)

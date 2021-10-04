@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     get :flawed
     get :file
     get :data
+    get :redirect
   end
 end

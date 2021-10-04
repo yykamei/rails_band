@@ -44,4 +44,8 @@ class UsersController < ApplicationController
   def data
     send_data 'Hello!', status: 201, filename: 'power.html'
   end
+
+  def redirect
+    redirect_to users_path
+  end
 end
