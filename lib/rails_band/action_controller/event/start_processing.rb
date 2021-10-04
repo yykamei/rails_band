@@ -3,10 +3,6 @@
 module RailsBand
   module ActionController
     module Event
-      # This comes from ::ActionController::LogSubscriber
-      # @see https://github.com/rails/rails/blob/53000f3a2df5c59252d019bbb8d46728b291ec74/actionpack/lib/action_controller/log_subscriber.rb#L5
-      INTERNAL_PARAMS = %w[controller action format _method only_path].freeze
-
       # ActionController::StartProcessing is a wrapper for the event that is passed to
       # `start_processing.action_controller`.
       class StartProcessing < BaseEvent
