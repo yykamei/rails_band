@@ -9,8 +9,34 @@ module RailsBand
           @path ||= @event.payload.fetch(:path)
         end
 
-        def additional_keys
-          @additional_keys ||= @event.payload.reject { |key, _value| key == :path }
+        def filename
+          return @filename if defined? @filename
+
+          @filename = @event.payload[:filename]
+        end
+
+        def type
+          return @type if defined? @type
+
+          @type = @event.payload[:type]
+        end
+
+        def disposition
+          return @disposition if defined? @disposition
+
+          @disposition = @event.payload[:disposition]
+        end
+
+        def status
+          return @status if defined? @status
+
+          @status = @event.payload[:status]
+        end
+
+        def url_based_filename
+          return @url_based_filename if defined? @url_based_filename
+
+          @url_based_filename = @event.payload[:url_based_filename]
         end
       end
     end

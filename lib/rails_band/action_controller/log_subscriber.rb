@@ -43,7 +43,7 @@ module RailsBand
       end
 
       def send_data(event)
-        event
+        consumer_of(__method__)&.call(Event::SendData.new(event))
       end
 
       def redirect_to(event)

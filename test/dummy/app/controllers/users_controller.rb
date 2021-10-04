@@ -37,7 +37,11 @@ class UsersController < ApplicationController
     raise 'Sorry'
   end
 
+  def file
+    send_file Rails.root.join('public/404.html'), filename: 'power.html'
+  end
+
   def data
-    send_file Rails.root.join('public/404.html'), file_name: 'power.html'
+    send_file Rails.root.join('public/404.html'), filename: 'power.html'
   end
 end
