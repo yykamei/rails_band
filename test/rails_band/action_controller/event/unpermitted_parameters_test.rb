@@ -56,6 +56,19 @@ class UnpermittedParametersTest < ActionDispatch::IntegrationTest
     assert_instance_of Float, @event.duration
   end
 
+  test 'calls #to_h' do
+    patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
+    %i[name time end transaction_id children cpu_time idle_time allocations duration
+       keys controller action request params].each do |key|
+      assert_includes @event.to_h, key
+    end
+  end
+
+  test 'calls #slice' do
+    patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
+    assert_equal({ name: 'unpermitted_parameters.action_controller' }, @event.slice(:name))
+  end
+
   test 'returns an instance of UnpermittedParameters' do
     patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
     assert_instance_of RailsBand::ActionController::Event::UnpermittedParameters, @event

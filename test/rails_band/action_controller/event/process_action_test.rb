@@ -55,6 +55,19 @@ class ProcessActionTest < ActionDispatch::IntegrationTest
     assert_instance_of Float, @event.duration
   end
 
+  test 'calls #to_h' do
+    get '/users'
+    %i[name time end transaction_id children cpu_time idle_time allocations duration controller action params headers
+      format method path status view_runtime request response db_runtime].each do |key|
+      assert_includes @event.to_h, key
+    end
+  end
+
+  test 'calls #slice' do
+    get '/users'
+    assert_equal({ name: 'process_action.action_controller', path: '/users' }, @event.slice(:name, :path))
+  end
+
   test 'returns an instance of ProcessAction' do
     get '/users'
     assert_instance_of RailsBand::ActionController::Event::ProcessAction, @event

@@ -56,6 +56,19 @@ class SendFileTest < ActionDispatch::IntegrationTest
     assert_instance_of Float, @event.duration
   end
 
+  test 'calls #to_h' do
+    get '/users/123/file'
+    %i[name time end transaction_id children cpu_time idle_time allocations duration
+       path filename type disposition status].each do |key|
+      assert_includes @event.to_h, key
+    end
+  end
+
+  test 'calls #slice' do
+    get '/users/123/file'
+    assert_equal({ name: 'send_file.action_controller' }, @event.slice(:name))
+  end
+
   test 'returns an instance of SendFile' do
     get '/users/123/file'
     assert_instance_of RailsBand::ActionController::Event::SendFile, @event

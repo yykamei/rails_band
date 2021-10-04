@@ -19,5 +19,18 @@ module RailsBand
       @allocations = event.allocations
       @duration = event.duration
     end
+
+    def to_h
+      @to_h ||= {
+        name: @name, time: @time, end: @end, transaction_id: @transaction_id, children: @children,
+        cpu_time: @cpu_time, idle_time: @idle_time, allocations: @allocations, duration: @duration
+      }.merge!(
+        public_methods(false).each_with_object({}) { |meth, h| h[meth] = public_send(meth) }
+      )
+    end
+
+    def slice(*args)
+      to_h.slice(*args)
+    end
   end
 end

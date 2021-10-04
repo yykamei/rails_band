@@ -56,12 +56,25 @@ class RedirectToTest < ActionDispatch::IntegrationTest
     assert_instance_of Float, @event.duration
   end
 
+  test 'calls #to_h' do
+    get '/users/123/redirect'
+    %i[name time end transaction_id children cpu_time idle_time allocations duration
+       status location request].each do |key|
+      assert_includes @event.to_h, key
+    end
+  end
+
+  test 'calls #slice' do
+    get '/users/123/redirect'
+    assert_equal({ name: 'redirect_to.action_controller', status: 302 }, @event.slice(:name, :status))
+  end
+
   test 'returns an instance of RedirectTo' do
     get '/users/123/redirect'
     assert_instance_of RailsBand::ActionController::Event::RedirectTo, @event
   end
 
-  test 'returns filename' do
+  test 'returns status' do
     get '/users/123/redirect'
     assert_equal 302, @event.status
   end
