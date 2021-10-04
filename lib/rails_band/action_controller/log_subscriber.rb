@@ -28,14 +28,6 @@ module RailsBand
         consumer_of(__method__)&.call(Event::ExistFragment.new(event))
       end
 
-      def write_page(event)
-        event
-      end
-
-      def expire_page(event)
-        event
-      end
-
       def start_processing(event)
         event
       end
