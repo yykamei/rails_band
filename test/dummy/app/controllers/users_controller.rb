@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :halt!, only: :callback
+
   def index
     @users = User.all
     fragment_exist?(@users)
@@ -46,6 +48,16 @@ class UsersController < ApplicationController
   end
 
   def redirect
+    redirect_to users_path
+  end
+
+  def callback
+    render json: { reached: true }
+  end
+
+  private
+
+  def halt!
     redirect_to users_path
   end
 end

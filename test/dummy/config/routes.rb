@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     get :file
     get :data
     get :redirect
+    get :callback
   end
 end
