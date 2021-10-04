@@ -34,7 +34,7 @@ class LogSubscriberTest < ActionDispatch::IntegrationTest
 
   test 'do not use the consumer because the event is not for the target' do
     RailsBand::ActionController::LogSubscriber.consumers = {
-      'start_processing.action_controller': ->(_event) { @mock.recv }
+      'unknown.action_controller': ->(_event) { @mock.recv }
     }
     get '/users'
     assert_raises MockExpectationError do

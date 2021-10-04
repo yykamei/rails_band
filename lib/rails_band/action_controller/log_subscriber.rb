@@ -4,6 +4,7 @@ require 'rails_band/action_controller/event/write_fragment'
 require 'rails_band/action_controller/event/read_fragment'
 require 'rails_band/action_controller/event/expire_fragment'
 require 'rails_band/action_controller/event/exist_fragment'
+require 'rails_band/action_controller/event/start_processing'
 require 'rails_band/action_controller/event/process_action'
 
 module RailsBand
@@ -29,7 +30,7 @@ module RailsBand
       end
 
       def start_processing(event)
-        event
+        consumer_of(__method__)&.call(Event::StartProcessing.new(event))
       end
 
       def process_action(event)
