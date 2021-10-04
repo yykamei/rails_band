@@ -42,6 +42,6 @@ class UsersController < ApplicationController
   end
 
   def data
-    send_file Rails.root.join('public/404.html'), filename: 'power.html'
+    send_data 'Hello!', status: 201, filename: 'power.html'
   end
 end

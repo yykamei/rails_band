@@ -7,6 +7,7 @@ require 'rails_band/action_controller/event/exist_fragment'
 require 'rails_band/action_controller/event/start_processing'
 require 'rails_band/action_controller/event/process_action'
 require 'rails_band/action_controller/event/send_file'
+require 'rails_band/action_controller/event/send_data'
 
 module RailsBand
   module ActionController
