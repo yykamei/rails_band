@@ -1,6 +1,6 @@
 <div>
   <h2>List of users</h2>
   <% cache @users do %>
-    <%= render partial: 'user', collection: @users %>
+    <%= render partial: 'user', collection: @users, cached: true %>
   <% end %>
 </div>
