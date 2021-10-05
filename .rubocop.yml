@@ -2,3 +2,5 @@ require: rubocop-minitest
 
 AllCops:
   NewCops: enable
+  Excludes:
+    - "**/db/schema.rb"

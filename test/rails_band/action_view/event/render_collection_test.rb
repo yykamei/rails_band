@@ -59,7 +59,8 @@ class RenderCollectionTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get '/users'
-    %i[name time end transaction_id children cpu_time idle_time allocations duration identifier layout count cache_hits].each do |key|
+    %i[name time end transaction_id children cpu_time idle_time allocations duration identifier layout count
+       cache_hits].each do |key|
       assert_includes @event.to_h, key
     end
   end

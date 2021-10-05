@@ -58,7 +58,7 @@ class ProcessActionTest < ActionDispatch::IntegrationTest
   test 'calls #to_h' do
     get '/users'
     %i[name time end transaction_id children cpu_time idle_time allocations duration controller action params headers
-      format method path status view_runtime request response db_runtime].each do |key|
+       format method path status view_runtime request response db_runtime].each do |key|
       assert_includes @event.to_h, key
     end
   end
