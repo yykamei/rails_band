@@ -19,6 +19,11 @@ module RailsBand
 
       swap.call(::ActionController::LogSubscriber, RailsBand::ActionController::LogSubscriber, :action_controller)
       swap.call(::ActionView::LogSubscriber, RailsBand::ActionView::LogSubscriber, :action_view)
+
+      if defined?(::ActiveRecord)
+        require 'active_record/log_subscriber'
+        swap.call(::ActiveRecord::LogSubscriber, RailsBand::ActiveRecord::LogSubscriber, :active_record)
+      end
     end
   end
 end

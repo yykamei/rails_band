@@ -139,6 +139,6 @@ class ProcessActionTest < ActionDispatch::IntegrationTest
 
   test 'returns db_runtime' do
     get '/users'
-    assert_instance_of Float, @event.db_runtime
+    assert_kind_of Numeric, @event.db_runtime
   end
 end
