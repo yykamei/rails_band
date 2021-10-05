@@ -2,5 +2,9 @@ require: rubocop-minitest
 
 AllCops:
   NewCops: enable
-  Excludes:
+  Exclude:
     - "**/db/schema.rb"
+
+Metrics/ClassLength:
+  Exclude:
+    - "test/**/*_test.rb"
