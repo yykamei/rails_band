@@ -3,8 +3,7 @@
 module RailsBand
   module ActionController
     module Event
-      # ActionController::UnpermittedParameters is a wrapper for the event that is passed
-      # to `unpermitted_parameters.action_controller`.
+      # A wrapper for the event that is passed to `unpermitted_parameters.action_controller`.
       class UnpermittedParameters < BaseEvent
         def keys
           @keys ||= @event.payload.fetch(:keys)

@@ -3,7 +3,7 @@
 module RailsBand
   module ActiveRecord
     module Event
-      # ActionView::RenderCollection is a wrapper for the event that is passed to `render_collection.action_view`.
+      # A wrapper for the event that is passed to `sql.active_record`.
       class Sql < BaseEvent
         def sql
           @sql ||= @event.payload.fetch(:sql)

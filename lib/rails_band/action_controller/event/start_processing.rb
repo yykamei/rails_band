@@ -3,8 +3,7 @@
 module RailsBand
   module ActionController
     module Event
-      # ActionController::StartProcessing is a wrapper for the event that is passed to
-      # `start_processing.action_controller`.
+      # A wrapper for the event that is passed to `start_processing.action_controller`.
       class StartProcessing < BaseEvent
         def controller
           @controller ||= @event.payload.fetch(:controller)

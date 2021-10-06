@@ -3,7 +3,7 @@
 module RailsBand
   module ActionController
     module Event
-      # ActionController::ProcessAction is a wrapper for the event that is passed to `process_action.action_controller`.
+      # A wrapper for the event that is passed to `process_action.action_controller`.
       class ProcessAction < BaseEvent
         def controller
           @controller ||= @event.payload.fetch(:controller)

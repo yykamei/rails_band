@@ -3,7 +3,7 @@
 module RailsBand
   module ActionController
     module Event
-      # ActionController::SendData is a wrapper for the event that is passed to `send_data.action_controller`.
+      # A wrapper for the event that is passed to `send_data.action_controller`.
       class SendData < BaseEvent
         def filename
           return @filename if defined? @filename

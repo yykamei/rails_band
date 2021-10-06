@@ -3,7 +3,7 @@
 module RailsBand
   module ActionController
     module Event
-      # ActionController::RedirectTo is a wrapper for the event that is passed to `redirect_to.action_controller`.
+      # A wrapper for the event that is passed to `redirect_to.action_controller`.
       class RedirectTo < BaseEvent
         def status
           @status ||= @event.payload.fetch(:status)

@@ -3,7 +3,7 @@
 module RailsBand
   module ActionController
     module Event
-      # ActionController::SendFile is a wrapper for the event that is passed to `send_file.action_controller`.
+      # A wrapper for the event that is passed to `send_file.action_controller`.
       class SendFile < BaseEvent
         def path
           @path ||= @event.payload.fetch(:path)

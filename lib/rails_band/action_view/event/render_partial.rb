@@ -5,7 +5,7 @@ require 'rails_band/action_view/from_views'
 module RailsBand
   module ActionView
     module Event
-      # ActionView::RenderPartial is a wrapper for the event that is passed to `render_partial.action_view`.
+      # A wrapper for the event that is passed to `render_partial.action_view`.
       class RenderPartial < BaseEvent
         include FromViews
 
