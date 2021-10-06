@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_band/active_record/event/sql'
+require 'rails_band/active_record/event/instantiation'
 
 module RailsBand
   module ActiveRecord
@@ -10,6 +11,10 @@ module RailsBand
 
       def sql(event)
         consumer_of(__method__)&.call(Event::Sql.new(event))
+      end
+
+      def instantiation(event)
+        consumer_of(__method__)&.call(Event::Instantiation.new(event))
       end
 
       private
