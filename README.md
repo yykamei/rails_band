@@ -35,7 +35,7 @@ You can also configure it by specifying event names:
 ```ruby
 Rails.application.config.rails_band.consumers = {
   default: ->(event) { Rails.logger.info(event.to_h) },
-  action_controller: -> (event) { Rails.logger.info(event.slice(:name, :method, :path, :status, :controller, :action)) },
+  action_controller: ->(event) { Rails.logger.info(event.slice(:name, :method, :path, :status, :controller, :action)) },
   'sql.active_record': ->(event) { Rails.logger.debug("#{event.sql_name}: #{event.sql}") },
 }
 ```
