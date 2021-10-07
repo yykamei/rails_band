@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   test:
+    name: Test on Ruby ${{ matrix.ruby }} with Rails ${{ matrix.rails }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
