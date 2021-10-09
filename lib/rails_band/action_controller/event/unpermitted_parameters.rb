@@ -9,36 +9,32 @@ module RailsBand
           @keys ||= @event.payload.fetch(:keys)
         end
 
-        # @see https://github.com/rails/rails/pull/41809
-        # @todo: Raise NoMethodError if the lower version of Rails could be used in the future.
-        def controller
-          return @controller if defined? @controller
-
-          @controller = @event.payload.dig(:context, :controller)
+        if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
+          # @see https://github.com/rails/rails/pull/41809
+          define_method(:controller) do
+            @controller ||= @event.payload.dig(:context, :controller)
+          end
         end
 
-        # @see https://github.com/rails/rails/pull/41809
-        # @todo: Raise NoMethodError if the lower version of Rails could be used in the future.
-        def action
-          return @action if defined? @action
-
-          @action = @event.payload.dig(:context, :action)
+        if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
+          # @see https://github.com/rails/rails/pull/41809
+          define_method(:action) do
+            @action ||= @event.payload.dig(:context, :action)
+          end
         end
 
-        # @see https://github.com/rails/rails/pull/41809
-        # @todo: Raise NoMethodError if the lower version of Rails could be used in the future.
-        def request
-          return @request if defined? @request
-
-          @request = @event.payload.dig(:context, :request)
+        if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
+          # @see https://github.com/rails/rails/pull/41809
+          define_method(:request) do
+            @request ||= @event.payload.dig(:context, :request)
+          end
         end
 
-        # @see https://github.com/rails/rails/pull/41809
-        # @todo: Raise NoMethodError if the lower version of Rails could be used in the future.
-        def params
-          return @params if defined? @params
-
-          @params = @event.payload.dig(:context, :params)
+        if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
+          # @see https://github.com/rails/rails/pull/41809
+          define_method(:params) do
+            @params ||= @event.payload.dig(:context, :params)
+          end
         end
       end
     end

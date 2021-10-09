@@ -58,8 +58,7 @@ class UnpermittedParametersTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
-    %i[name time end transaction_id children cpu_time idle_time allocations duration
-       keys controller action request params].each do |key|
+    %i[name time end transaction_id children cpu_time idle_time allocations duration keys].each do |key|
       assert_includes @event.to_h, key
     end
   end
@@ -79,23 +78,59 @@ class UnpermittedParametersTest < ActionDispatch::IntegrationTest
     assert_equal %w[nickname login_shell], @event.keys
   end
 
-  test 'returns controller' do
-    patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
-    assert_respond_to @event, :controller
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
+    test 'returns controller' do
+      patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
+      assert_equal 'UsersController', @event.controller
+    end
+  else
+    test 'raises NoMethodError when accessing controller' do
+      patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
+      assert_raises NoMethodError do
+        @event.controller
+      end
+    end
   end
 
-  test 'returns action' do
-    patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
-    assert_respond_to @event, :action
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
+    test 'returns action' do
+      patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
+      assert_equal 'update', @event.action
+    end
+  else
+    test 'raises NoMethodError when accessing action' do
+      patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
+      assert_raises NoMethodError do
+        @event.action
+      end
+    end
   end
 
-  test 'returns request' do
-    patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
-    assert_respond_to @event, :request
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
+    test 'returns request' do
+      patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
+      assert_instance_of ActionDispatch::Request, @event.request
+    end
+  else
+    test 'raises NoMethodError when accessing request' do
+      patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
+      assert_raises NoMethodError do
+        @event.request
+      end
+    end
   end
 
-  test 'returns params' do
-    patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
-    assert_respond_to @event, :params
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
+    test 'returns params' do
+      patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
+      assert_equal({ user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }, @event.params)
+    end
+  else
+    test 'raises NoMethodError when accessing params' do
+      patch "/users/#{@user.id}", params: { user: { name: 'foo!', nickname: 'F', login_shell: 'zsh' } }
+      assert_raises NoMethodError do
+        @event.params
+      end
+    end
   end
 end
