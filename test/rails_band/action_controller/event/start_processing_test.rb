@@ -58,7 +58,7 @@ class StartProcessingTest < ActionDispatch::IntegrationTest
   test 'calls #to_h' do
     get '/users'
     %i[name time end transaction_id children cpu_time idle_time allocations duration controller action params headers
-       format method path request].each do |key|
+       format method path].each do |key|
       assert_includes @event.to_h, key
     end
   end
@@ -109,8 +109,17 @@ class StartProcessingTest < ActionDispatch::IntegrationTest
     assert_equal '/users', @event.path
   end
 
-  test 'returns request' do
-    get '/users'
-    assert_instance_of ActionDispatch::Request, @event.request
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
+    test 'returns request' do
+      get '/users'
+      assert_instance_of ActionDispatch::Request, @event.request
+    end
+  else
+    test 'raises NoMethodError when accessing request' do
+      get '/users'
+      assert_raises NoMethodError do
+        @event.request
+      end
+    end
   end
 end

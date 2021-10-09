@@ -13,11 +13,10 @@ module RailsBand
           @location ||= @event.payload.fetch(:location)
         end
 
-        # @todo: Raise NoMethodError if the lower version of Rails could be used in the future.
-        def request
-          return @request if defined? @request
-
-          @request = @event.payload[:request]
+        if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
+          define_method(:request) do
+            @request ||= @event.payload[:request]
+          end
         end
       end
     end

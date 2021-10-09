@@ -59,7 +59,7 @@ class RedirectToTest < ActionDispatch::IntegrationTest
   test 'calls #to_h' do
     get '/users/123/redirect'
     %i[name time end transaction_id children cpu_time idle_time allocations duration
-       status location request].each do |key|
+       status location].each do |key|
       assert_includes @event.to_h, key
     end
   end
@@ -84,8 +84,17 @@ class RedirectToTest < ActionDispatch::IntegrationTest
     assert_equal 'http://www.example.com/users', @event.location
   end
 
-  test 'returns request' do
-    get '/users/123/redirect'
-    assert_instance_of ActionDispatch::Request, @event.request
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
+    test 'returns request' do
+      get '/users/123/redirect'
+      assert_instance_of ActionDispatch::Request, @event.request
+    end
+  else
+    test 'raises NoMethodError when accessing request' do
+      get '/users/123/redirect'
+      assert_raises NoMethodError do
+        @event.request
+      end
+    end
   end
 end

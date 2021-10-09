@@ -49,18 +49,16 @@ module RailsBand
           @view_runtime ||= @event.payload.fetch(:view_runtime)
         end
 
-        # @todo: Raise NoMethodError if the lower version of Rails could be used in the future.
-        def request
-          return @request if defined? @request
-
-          @request = @event.payload[:request]
+        if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
+          define_method(:request) do
+            @request ||= @event.payload[:request]
+          end
         end
 
-        # @todo: Raise NoMethodError if the lower version of Rails could be used in the future.
-        def response
-          return @response if defined? @response
-
-          @response = @event.payload[:response]
+        if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
+          define_method(:response) do
+            @response ||= @event.payload[:response]
+          end
         end
 
         def db_runtime

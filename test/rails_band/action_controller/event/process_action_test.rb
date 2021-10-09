@@ -58,7 +58,7 @@ class ProcessActionTest < ActionDispatch::IntegrationTest
   test 'calls #to_h' do
     get '/users'
     %i[name time end transaction_id children cpu_time idle_time allocations duration controller action params headers
-       format method path status view_runtime request response db_runtime].each do |key|
+       format method path status view_runtime db_runtime].each do |key|
       assert_includes @event.to_h, key
     end
   end
@@ -127,14 +127,32 @@ class ProcessActionTest < ActionDispatch::IntegrationTest
     assert_instance_of Float, @event.view_runtime
   end
 
-  test 'returns request' do
-    get '/users'
-    assert_instance_of ActionDispatch::Request, @event.request
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
+    test 'returns request' do
+      get '/users'
+      assert_instance_of ActionDispatch::Request, @event.request
+    end
+  else
+    test 'raises NoMethodError when accessing request' do
+      get '/users'
+      assert_raises NoMethodError do
+        @event.request
+      end
+    end
   end
 
-  test 'returns response' do
-    get '/users'
-    assert_instance_of ActionDispatch::Response, @event.response
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
+    test 'returns response' do
+      get '/users'
+      assert_instance_of ActionDispatch::Response, @event.response
+    end
+  else
+    test 'raises NoMethodError when accessing response' do
+      get '/users'
+      assert_raises NoMethodError do
+        @event.response
+      end
+    end
   end
 
   test 'returns db_runtime' do
