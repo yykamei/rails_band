@@ -25,12 +25,20 @@ module RailsBand
         name: @name, time: @time, end: @end, transaction_id: @transaction_id, children: @children,
         cpu_time: @cpu_time, idle_time: @idle_time, allocations: @allocations, duration: @duration
       }.merge!(
-        public_methods(false).each_with_object({}) { |meth, h| h[meth] = public_send(meth) }
+        public_methods(false).reject { |meth| non_hash_keys.include?(meth) }.each_with_object({}) do |meth, h|
+          h[meth] = public_send(meth)
+        end
       )
     end
 
     def slice(*args)
       to_h.slice(*args)
+    end
+
+    private
+
+    def non_hash_keys
+      @non_hash_keys ||= []
     end
   end
 end
