@@ -2,12 +2,17 @@
 
 require 'rails_band/active_record/event/sql'
 require 'rails_band/active_record/event/instantiation'
+require 'rails_band/active_record/event/strict_loading_violation'
 
 module RailsBand
   module ActiveRecord
     # The custom LogSubscriber for ActiveRecord.
     class LogSubscriber < ::ActiveSupport::LogSubscriber
       mattr_accessor :consumers
+
+      def strict_loading_violation(event)
+        consumer_of(__method__)&.call(Event::StrictLoadingViolation.new(event))
+      end
 
       def sql(event)
         consumer_of(__method__)&.call(Event::Sql.new(event))

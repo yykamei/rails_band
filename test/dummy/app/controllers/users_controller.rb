@@ -55,6 +55,13 @@ class UsersController < ApplicationController
     render json: { reached: true }
   end
 
+  def notes
+    @user = User.find(params.require(:user_id))
+    @user.strict_loading!
+    @user.notes.to_a
+    redirect_to users_path
+  end
+
   private
 
   def halt!

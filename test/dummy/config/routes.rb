@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     get :data
     get :redirect
     get :callback
+    get :notes
   end
 end
