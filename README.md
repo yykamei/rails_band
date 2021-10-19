@@ -1,5 +1,8 @@
 # rails_band
 
+<a href="https://github.com/yykamei/rails_band/actions/workflows/ci.yml"><img alt="GitHub Actions workflow status" src="https://github.com/yykamei/rails_band/actions/workflows/ci.yml/badge.svg"></a>
+<a href="https://rubygems.org/gems/rails_band"><img alt="Gem" src="https://img.shields.io/gem/v/rails_band"></a>
+
 Easy-to-use Rails Instrumentation API.
 
 ## Installation
