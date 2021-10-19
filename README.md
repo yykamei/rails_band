@@ -40,7 +40,10 @@ Rails.application.config.rails_band.consumers = {
 }
 ```
 
-You can do what you want for the Rails Instrumentation hooks! These are just examples, so you can also use it for non-logging purposes.
+Note `:default` is the fallback of other non-specific event names. Other events will be ignored without `:default`.
+In other words, you can consume only events that you want to really consume without `:default`.
+
+rails_band does not limit you only to use logging purposes. Enjoy with Rails Instrumentation hooks!
 
 ## Contributing
 
