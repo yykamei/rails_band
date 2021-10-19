@@ -12,3 +12,5 @@ AllCops:
 Metrics/ClassLength:
   Exclude:
     - 'test/**/*_test.rb'
+
+# If you feel annoyed by the current configuration, let's tweak the configuration!
