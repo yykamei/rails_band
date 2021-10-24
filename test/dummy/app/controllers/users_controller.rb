@@ -62,6 +62,12 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def welcome_email
+    user = User.find(params.require(:user_id))
+    WelcomeMailer.with(user: user).hi.deliver_now
+    redirect_to users_path
+  end
+
   private
 
   def halt!
