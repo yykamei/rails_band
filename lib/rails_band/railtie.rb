@@ -24,6 +24,11 @@ module RailsBand
         require 'active_record/log_subscriber'
         swap.call(::ActiveRecord::LogSubscriber, RailsBand::ActiveRecord::LogSubscriber, :active_record)
       end
+
+      if defined?(::ActionMailer)
+        require 'action_mailer/log_subscriber'
+        swap.call(::ActionMailer::LogSubscriber, RailsBand::ActionMailer::LogSubscriber, :action_mailer)
+      end
     end
   end
 end

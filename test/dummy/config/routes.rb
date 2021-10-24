@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     get :redirect
     get :callback
     get :notes
+    get :welcome_email
   end
 end

@@ -13,4 +13,9 @@ Metrics/ClassLength:
   Exclude:
     - 'test/**/*_test.rb'
 
+# `assert_equal([], object)` and `assert_equal({}, object)` are completely different,
+# so this cop does not make sense to me.
+Minitest/AssertEmptyLiteral:
+  Enabled: false
+
 # If you feel annoyed by the current configuration, let's tweak the configuration!
