@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Support process.action\_mailer [\#4](https://github.com/yykamei/rails_band/pull/4) ([yykamei](https://github.com/yykamei))
 - Support deliver.action\_mailer [\#2](https://github.com/yykamei/rails_band/pull/2) ([yykamei](https://github.com/yykamei))
 
 ## [v0.1.0](https://github.com/yykamei/rails_band/tree/v0.1.0) (2021-10-19)
