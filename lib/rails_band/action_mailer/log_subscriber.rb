@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_band/action_mailer/event/deliver'
+require 'rails_band/action_mailer/event/process'
 
 module RailsBand
   module ActionMailer
@@ -10,6 +11,10 @@ module RailsBand
 
       def deliver(event)
         consumer_of(__method__)&.call(Event::Deliver.new(event))
+      end
+
+      def process(event)
+        consumer_of(__method__)&.call(Event::Process.new(event))
       end
 
       private
