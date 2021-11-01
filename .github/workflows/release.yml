@@ -37,15 +37,16 @@ jobs:
             end
           RUBY
 
+      - run: git diff
+
       - uses: yykamei/actions-git-push@main
         with:
           commit-message: Bump to ${{ github.event.inputs.version }}
         if: github.event.inputs.apply == 'true'
 
-      - name: Publish the gem
-        run: |
-          gem build rails_band.gemspec
-          gem publish *.gem
+      - run: gem build rails_band.gemspec
+
+      - run: gem publish *.gem
         env:
           GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
         if: github.event.inputs.apply == 'true'
