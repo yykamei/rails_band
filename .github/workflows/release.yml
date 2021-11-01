@@ -30,11 +30,11 @@ jobs:
       - name: Update `RailsBand::VERSION`
         run: |
           cat <<RUBY > lib/rails_band/version.rb
-            # frozen_string_literal: true
+          # frozen_string_literal: true
 
-            module RailsBand
-              VERSION = '${{ github.event.inputs.version }}'
-            end
+          module RailsBand
+            VERSION = '${{ github.event.inputs.version }}'
+          end
           RUBY
 
       - run: git diff
