@@ -58,7 +58,7 @@ class CacheReadTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get "/users/#{@user.id}/cache"
-    %i[name time end transaction_id children cpu_time idle_time allocations duration key store hit
+    %i[name time end transaction_id children cpu_time idle_time allocations duration key hit
        super_operation].each do |key|
       assert_includes @event.to_h, key
     end
@@ -79,9 +79,19 @@ class CacheReadTest < ActionDispatch::IntegrationTest
     assert_equal @user.id, @event.key
   end
 
-  test 'returns store' do
-    get "/users/#{@user.id}/cache"
-    assert_equal 'ActiveSupport::Cache::NullStore', @event.store
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
+    test 'returns store' do
+      get "/users/#{@user.id}/cache"
+      assert_equal 'ActiveSupport::Cache::NullStore', @event.store
+    end
+  else
+    test 'raises NoMethodError when accessing store' do
+      get "/users/#{@user.id}/cache"
+      get '/users'
+      assert_raises NoMethodError do
+        @event.store
+      end
+    end
   end
 
   test 'returns hit' do

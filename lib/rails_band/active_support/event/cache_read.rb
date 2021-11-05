@@ -9,8 +9,10 @@ module RailsBand
           @key ||= @event.payload.fetch(:key)
         end
 
-        def store
-          @store ||= @event.payload.fetch(:store)
+        if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
+          define_method(:store) do
+            @store ||= @event.payload.fetch(:store)
+          end
         end
 
         def hit
