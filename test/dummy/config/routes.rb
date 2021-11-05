@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     get :callback
     get :notes
     get :welcome_email
+    get :cache
   end
 end

@@ -68,6 +68,15 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def cache
+    user = User.find(params.require(:user_id))
+    result = Rails.cache.fetch(user.id, expires_in: 1.minutes) do
+      user.slow_method
+    end
+    logger.info(result)
+    redirect_to user_path(user)
+  end
+
   private
 
   def halt!

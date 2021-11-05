@@ -18,4 +18,9 @@ Metrics/ClassLength:
 Minitest/AssertEmptyLiteral:
   Enabled: false
 
+# `assert_equal(false, object)` and `assert_equal(nil, object)` are different when it comes to their types,
+# so this cop does not make sense to me.
+Minitest/RefuteFalse:
+  Enabled: false
+
 # If you feel annoyed by the current configuration, let's tweak the configuration!
