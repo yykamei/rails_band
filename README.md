@@ -124,6 +124,7 @@ rails_band does not limit you only to use logging purposes. Enjoy with Rails Ins
 * [ ] [`service_url.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-url-active-storage)
 * [ ] [`service_update_metadata.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-update-metadata-active-storage)
 * [ ] [`preview.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#preview-active-storage)
+* [ ] [`analyze.active_storage`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#analyze-active-storage)
 
 ### Railties
 
