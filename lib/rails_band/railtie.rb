@@ -29,6 +29,8 @@ module RailsBand
         require 'action_mailer/log_subscriber'
         swap.call(::ActionMailer::LogSubscriber, RailsBand::ActionMailer::LogSubscriber, :action_mailer)
       end
+
+      RailsBand::ActiveSupport::LogSubscriber.attach_to :active_support
     end
   end
 end

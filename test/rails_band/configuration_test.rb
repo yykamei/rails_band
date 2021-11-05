@@ -3,7 +3,7 @@
 require 'test_helper'
 
 module RailsBand
-  class ConfigurationTest < ActiveSupport::TestCase
+  class ConfigurationTest < ::ActiveSupport::TestCase
     test 'it can accept the consumers with a block' do
       config = RailsBand::Configuration.new
       config.consumers = ->(v) { v + 1 }
