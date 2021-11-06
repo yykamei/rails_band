@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Support cache\_generate.active\_support [\#10](https://github.com/yykamei/rails_band/pull/10) ([yykamei](https://github.com/yykamei))
 - Support cache\_read.active\_support [\#8](https://github.com/yykamei/rails_band/pull/8) ([yykamei](https://github.com/yykamei))
 
 ## [v0.2.0](https://github.com/yykamei/rails_band/tree/v0.2.0) (2021-11-01)
