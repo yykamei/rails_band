@@ -2,6 +2,7 @@
 
 require 'rails_band/active_support/event/cache_read'
 require 'rails_band/active_support/event/cache_generate'
+require 'rails_band/active_support/event/cache_fetch_hit'
 
 module RailsBand
   module ActiveSupport
@@ -15,6 +16,10 @@ module RailsBand
 
       def cache_generate(event)
         consumer_of(__method__)&.call(Event::CacheGenerate.new(event))
+      end
+
+      def cache_fetch_hit(event)
+        consumer_of(__method__)&.call(Event::CacheFetchHit.new(event))
       end
 
       private

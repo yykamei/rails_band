@@ -87,7 +87,6 @@ class CacheReadTest < ActionDispatch::IntegrationTest
   else
     test 'raises NoMethodError when accessing store' do
       get "/users/#{@user.id}/cache"
-      get '/users'
       assert_raises NoMethodError do
         @event.store
       end
