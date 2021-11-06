@@ -77,6 +77,13 @@ class UsersController < ApplicationController
     redirect_to user_path(user)
   end
 
+  def cache2
+    Rails.cache.fetch('ok', expires_in: 1.minutes) { 'ok' }
+    result = Rails.cache.fetch('ok', expires_in: 1.minutes) { 'ok' }
+    logger.info(result)
+    redirect_to users_path
+  end
+
   private
 
   def halt!

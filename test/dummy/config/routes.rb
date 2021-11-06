@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     get :notes
     get :welcome_email
     get :cache
+    get :cache2
   end
 end
