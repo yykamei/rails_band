@@ -89,7 +89,7 @@ rails_band does not limit you only to use logging purposes. Enjoy with Rails Ins
 
 * [x] [`cache_read.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-read-active-support)
 * [x] [`cache_generate.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-generate-active-support)
-* [ ] [`cache_fetch_hit.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-fetch-hit-active-support)
+* [x] [`cache_fetch_hit.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-fetch-hit-active-support)
 * [ ] [`cache_write.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-write-active-support)
 * [ ] [`cache_delete.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-delete-active-support)
 * [ ] [`cache_exist?.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-exist-questionmark-active-support)
