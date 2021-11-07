@@ -83,8 +83,12 @@ class UsersController < ApplicationController
     Rails.cache.delete('DEL!')
     Rails.cache.exist?('nonexistent')
     Rails.cache.fetch_multi(*%w[a b c]) { [] }
-    Rails.cache.write_multi(w1: 1, w2: 2)
     logger.info(result)
+    redirect_to users_path
+  end
+
+  def cache3
+    Rails.cache.write_multi(w1: 1, w2: 2)
     redirect_to users_path
   end
 

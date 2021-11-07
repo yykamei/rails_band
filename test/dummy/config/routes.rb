@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     get :welcome_email
     get :cache
     get :cache2
+    get :cache3
   end
 end
