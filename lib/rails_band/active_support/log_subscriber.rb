@@ -4,6 +4,7 @@ require 'rails_band/active_support/event/cache_read'
 require 'rails_band/active_support/event/cache_generate'
 require 'rails_band/active_support/event/cache_fetch_hit'
 require 'rails_band/active_support/event/cache_write'
+require 'rails_band/active_support/event/cache_delete'
 
 module RailsBand
   module ActiveSupport
@@ -25,6 +26,10 @@ module RailsBand
 
       def cache_write(event)
         consumer_of(__method__)&.call(Event::CacheWrite.new(event))
+      end
+
+      def cache_delete(event)
+        consumer_of(__method__)&.call(Event::CacheDelete.new(event))
       end
 
       private
