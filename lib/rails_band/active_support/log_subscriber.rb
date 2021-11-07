@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_band/active_support/event/cache_read'
+require 'rails_band/active_support/event/cache_read_multi'
 require 'rails_band/active_support/event/cache_generate'
 require 'rails_band/active_support/event/cache_fetch_hit'
 require 'rails_band/active_support/event/cache_write'
@@ -15,6 +16,10 @@ module RailsBand
 
       def cache_read(event)
         consumer_of(__method__)&.call(Event::CacheRead.new(event))
+      end
+
+      def cache_read_multi(event)
+        consumer_of(__method__)&.call(Event::CacheReadMulti.new(event))
       end
 
       def cache_generate(event)

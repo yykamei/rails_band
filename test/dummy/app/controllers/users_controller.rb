@@ -82,6 +82,7 @@ class UsersController < ApplicationController
     result = Rails.cache.fetch('ok', expires_in: 1.minutes) { 'ok' }
     Rails.cache.delete('DEL!')
     Rails.cache.exist?('nonexistent')
+    Rails.cache.fetch_multi(*%w[a b c]) { [] }
     logger.info(result)
     redirect_to users_path
   end
