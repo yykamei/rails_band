@@ -95,7 +95,7 @@ rails_band does not limit you only to use logging purposes. Enjoy with Rails Ins
 * [ ] `cache_write_multi.active_support` (Not yet documented)
 * [x] [`cache_delete.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-delete-active-support)
 * [ ] `cache_delete_multi.active_support` (Not yet documented)
-* [ ] [`cache_exist?.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-exist-questionmark-active-support)
+* [x] [`cache_exist?.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-exist-questionmark-active-support)
 
 ### Active Job
 
