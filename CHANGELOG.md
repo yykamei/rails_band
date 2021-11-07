@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Support cache\_exist?.active\_support [\#18](https://github.com/yykamei/rails_band/pull/18) ([yykamei](https://github.com/yykamei))
 - Support cache\_delete.active\_support [\#16](https://github.com/yykamei/rails_band/pull/16) ([yykamei](https://github.com/yykamei))
 - Support cache\_write.active\_support [\#14](https://github.com/yykamei/rails_band/pull/14) ([yykamei](https://github.com/yykamei))
 - Support cache\_fetch\_hit.active\_support [\#12](https://github.com/yykamei/rails_band/pull/12) ([yykamei](https://github.com/yykamei))
