@@ -16,9 +16,7 @@ module RailsBand
         end
 
         def hits
-          return @hits if defined? @hits
-
-          @hits = @event.payload[:hits]
+          @hits ||= @event.payload[:hits] || []
         end
 
         def super_operation
