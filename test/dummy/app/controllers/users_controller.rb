@@ -89,7 +89,7 @@ class UsersController < ApplicationController
 
   def cache3
     Rails.cache.write_multi(w1: 1, w2: 2)
-    Rails.cache.delete_multi(['ok', :df])
+    Rails.cache.delete_multi(['ok', :df]) if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
     redirect_to users_path
   end
 
