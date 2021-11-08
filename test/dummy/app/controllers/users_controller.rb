@@ -89,6 +89,7 @@ class UsersController < ApplicationController
 
   def cache3
     Rails.cache.write_multi(w1: 1, w2: 2)
+    Rails.cache.delete_multi(['ok', :df])
     redirect_to users_path
   end
 
