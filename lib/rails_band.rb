@@ -27,4 +27,8 @@ module RailsBand
   module ActiveSupport
     autoload :LogSubscriber, 'rails_band/active_support/log_subscriber'
   end
+
+  module ActiveJob
+    autoload :LogSubscriber, 'rails_band/active_job/log_subscriber'
+  end
 end

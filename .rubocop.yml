@@ -23,4 +23,8 @@ Minitest/AssertEmptyLiteral:
 Minitest/RefuteFalse:
   Enabled: false
 
+# `after_initialize` requires many block length.
+Metrics/BlockLength:
+  Max: 50
+
 # If you feel annoyed by the current configuration, let's tweak the configuration!

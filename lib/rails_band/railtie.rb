@@ -31,6 +31,17 @@ module RailsBand
       end
 
       RailsBand::ActiveSupport::LogSubscriber.attach_to :active_support
+
+      if defined?(::ActiveJob)
+        require 'active_job/logging'
+
+        if defined?(::ActiveJob::Logging::LogSubscriber)
+          swap.call(::ActiveJob::Logging::LogSubscriber, RailsBand::ActiveJob::LogSubscriber, :active_job)
+        else
+          require 'active_job/log_subscriber'
+          swap.call(::ActiveJob::LogSubscriber, RailsBand::ActiveJob::LogSubscriber, :active_job)
+        end
+      end
     end
   end
 end
