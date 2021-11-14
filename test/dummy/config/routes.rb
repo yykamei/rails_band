@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     get :cache3
   end
 
-  resources :yay, only: %i[index]
+  resources :yay, only: %i[index show]
 end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_band/active_job/event/enqueue_at'
+require 'rails_band/active_job/event/enqueue'
 
 module RailsBand
   module ActiveJob
@@ -10,6 +11,10 @@ module RailsBand
 
       def enqueue_at(event)
         consumer_of(__method__)&.call(Event::EnqueueAt.new(event))
+      end
+
+      def enqueue(event)
+        consumer_of(__method__)&.call(Event::Enqueue.new(event))
       end
 
       private
