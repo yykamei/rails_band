@@ -117,7 +117,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | Event name                                                                                                                | Supported |
 | ------------------------------------------------------------------------------------------------------------------------- | --------- |
 | [`enqueue_at.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#enqueue-at-active-job)       | ✅        |
-| [`enqueue.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#enqueue-active-job)             | ✅         |
+| [`enqueue.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#enqueue-active-job)             | ✅        |
 | [`enqueue_retry.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#enqueue-retry-active-job) |           |
 | [`perform_start.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#perform-start-active-job) |           |
 | [`perform.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#perform-active-job)             |           |
