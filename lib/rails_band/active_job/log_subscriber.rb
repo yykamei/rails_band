@@ -2,6 +2,7 @@
 
 require 'rails_band/active_job/event/enqueue_at'
 require 'rails_band/active_job/event/enqueue'
+require 'rails_band/active_job/event/enqueue_retry'
 
 module RailsBand
   module ActiveJob
@@ -15,6 +16,10 @@ module RailsBand
 
       def enqueue(event)
         consumer_of(__method__)&.call(Event::Enqueue.new(event))
+      end
+
+      def enqueue_retry(event)
+        consumer_of(__method__)&.call(Event::EnqueueRetry.new(event))
       end
 
       private
