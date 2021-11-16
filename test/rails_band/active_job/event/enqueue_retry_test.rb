@@ -86,7 +86,7 @@ class EnqueueRetryTest < ActionDispatch::IntegrationTest
 
   test 'returns wait' do
     FlakyJob.perform_now
-    assert_instance_of Float, @event.wait
+    assert_kind_of Numeric, @event.wait
   end
 
   test 'returns error' do
