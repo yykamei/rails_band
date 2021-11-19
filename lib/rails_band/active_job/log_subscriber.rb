@@ -5,6 +5,7 @@ require 'rails_band/active_job/event/enqueue'
 require 'rails_band/active_job/event/enqueue_retry'
 require 'rails_band/active_job/event/perform_start'
 require 'rails_band/active_job/event/perform'
+require 'rails_band/active_job/event/retry_stopped'
 
 module RailsBand
   module ActiveJob
@@ -30,6 +31,10 @@ module RailsBand
 
       def perform(event)
         consumer_of(__method__)&.call(Event::Perform.new(event))
+      end
+
+      def retry_stopped(event)
+        consumer_of(__method__)&.call(Event::RetryStopped.new(event))
       end
 
       private
