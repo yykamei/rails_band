@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Support retry\_stopped.active\_job [\#36](https://github.com/yykamei/rails_band/pull/36) ([yykamei](https://github.com/yykamei))
 - Suppoer perform.active\_job [\#34](https://github.com/yykamei/rails_band/pull/34) ([yykamei](https://github.com/yykamei))
 - Support perform\_start.active\_job [\#32](https://github.com/yykamei/rails_band/pull/32) ([yykamei](https://github.com/yykamei))
 - Support enqueue\_retry.active\_job [\#30](https://github.com/yykamei/rails_band/pull/30) ([yykamei](https://github.com/yykamei))
