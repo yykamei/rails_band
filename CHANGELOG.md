@@ -1,11 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/yykamei/rails_band/tree/HEAD)
+## [v0.4.0](https://github.com/yykamei/rails_band/tree/v0.4.0) (2021-11-19)
 
-[Full Changelog](https://github.com/yykamei/rails_band/compare/v0.3.0...HEAD)
+[Full Changelog](https://github.com/yykamei/rails_band/compare/v0.3.0...v0.4.0)
 
 **Implemented enhancements:**
 
+- Support discard.active\_job [\#38](https://github.com/yykamei/rails_band/pull/38) ([yykamei](https://github.com/yykamei))
 - Support retry\_stopped.active\_job [\#36](https://github.com/yykamei/rails_band/pull/36) ([yykamei](https://github.com/yykamei))
 - Suppoer perform.active\_job [\#34](https://github.com/yykamei/rails_band/pull/34) ([yykamei](https://github.com/yykamei))
 - Support perform\_start.active\_job [\#32](https://github.com/yykamei/rails_band/pull/32) ([yykamei](https://github.com/yykamei))
