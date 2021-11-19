@@ -4,6 +4,6 @@ class YayJob < ApplicationJob
   queue_as :default
 
   def perform(name:, message:)
-    p [name, message]
+    logger.info([name, message].to_json)
   end
 end
