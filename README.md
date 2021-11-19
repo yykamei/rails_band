@@ -120,7 +120,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`enqueue.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#enqueue-active-job)             | ✅        |
 | [`enqueue_retry.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#enqueue-retry-active-job) | ✅        |
 | [`perform_start.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#perform-start-active-job) | ✅        |
-| [`perform.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#perform-active-job)             |           |
+| [`perform.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#perform-active-job)             | ✅        |
 | [`retry_stopped.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#retry-stopped-active-job) |           |
 | [`discard.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#discard-active-job)             |           |
 

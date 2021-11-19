@@ -4,6 +4,7 @@ require 'rails_band/active_job/event/enqueue_at'
 require 'rails_band/active_job/event/enqueue'
 require 'rails_band/active_job/event/enqueue_retry'
 require 'rails_band/active_job/event/perform_start'
+require 'rails_band/active_job/event/perform'
 
 module RailsBand
   module ActiveJob
@@ -25,6 +26,10 @@ module RailsBand
 
       def perform_start(event)
         consumer_of(__method__)&.call(Event::PerformStart.new(event))
+      end
+
+      def perform(event)
+        consumer_of(__method__)&.call(Event::Perform.new(event))
       end
 
       private
