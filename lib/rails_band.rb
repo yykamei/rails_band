@@ -31,4 +31,8 @@ module RailsBand
   module ActiveJob
     autoload :LogSubscriber, 'rails_band/active_job/log_subscriber'
   end
+
+  module ActionCable
+    autoload :LogSubscriber, 'rails_band/action_cable/log_subscriber'
+  end
 end
