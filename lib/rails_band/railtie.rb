@@ -30,6 +30,10 @@ module RailsBand
         swap.call(::ActionMailer::LogSubscriber, RailsBand::ActionMailer::LogSubscriber, :action_mailer)
       end
 
+      if defined?(::ActionCable)
+        RailsBand::ActionCable::LogSubscriber.attach_to :action_cable
+      end
+
       RailsBand::ActiveSupport::LogSubscriber.attach_to :active_support
 
       if defined?(::ActiveJob)

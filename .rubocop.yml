@@ -31,4 +31,8 @@ Metrics/BlockLength:
 Gemspec/RequireMFA:
   Enabled: false
 
+# I don't care the style of if/unless.
+Style/IfUnlessModifier:
+  Enabled: false
+
 # If you feel annoyed by the current configuration, let's tweak the configuration!

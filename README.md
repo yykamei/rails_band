@@ -128,7 +128,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 
 | Event name                                                                                                                                                              | Supported |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| [`perform_action.action_cable`](https://guides.rubyonrails.org/active_support_instrumentation.html#perform-action-action-cable)                                         |           |
+| [`perform_action.action_cable`](https://guides.rubyonrails.org/active_support_instrumentation.html#perform-action-action-cable)                                         | ✅        |
 | [`transmit.action_cable`](https://guides.rubyonrails.org/active_support_instrumentation.html#transmit-action-cable)                                                     |           |
 | [`transmit_subscription_confirmation.action_cable`](https://guides.rubyonrails.org/active_support_instrumentation.html#transmit-subscription-confirmation-action-cable) |           |
 | [`transmit_subscription_rejection.action_cable`](https://guides.rubyonrails.org/active_support_instrumentation.html#transmit-subscription-rejection-action-cable)       |           |
