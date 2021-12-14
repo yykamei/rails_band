@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Support transmit.action\_cable [\#43](https://github.com/yykamei/rails_band/pull/43) ([yykamei](https://github.com/yykamei))
 - Support perform\_action.action\_cable [\#40](https://github.com/yykamei/rails_band/pull/40) ([yykamei](https://github.com/yykamei))
 
 ## [v0.4.0](https://github.com/yykamei/rails_band/tree/v0.4.0) (2021-11-19)
