@@ -6,6 +6,10 @@ module ApplicationCable
       ActionCable.server.broadcast("nice_#{params[:number]}", data)
     end
 
+    def call_transmit(data)
+      transmit data, via: 'Hi!'
+    end
+
     private
 
     def subscribed
