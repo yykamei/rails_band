@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_band/action_cable/event/perform_action'
+require 'rails_band/action_cable/event/transmit'
 
 module RailsBand
   module ActionCable
@@ -10,6 +11,10 @@ module RailsBand
 
       def perform_action(event)
         consumer_of(__method__)&.call(Event::PerformAction.new(event))
+      end
+
+      def transmit(event)
+        consumer_of(__method__)&.call(Event::Transmit.new(event))
       end
 
       private
