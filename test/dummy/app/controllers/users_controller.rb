@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params.require(:id))
-    @user.update!(params.require(:user).permit(:email, :name))
+    @user.update!(params.permit(:email, :name))
   end
 
   def destroy
