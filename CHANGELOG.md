@@ -9,6 +9,14 @@
 - Support transmit.action\_cable [\#43](https://github.com/yykamei/rails_band/pull/43) ([yykamei](https://github.com/yykamei))
 - Support perform\_action.action\_cable [\#40](https://github.com/yykamei/rails_band/pull/40) ([yykamei](https://github.com/yykamei))
 
+**Fixed bugs:**
+
+- CI with edge Rails fails [\#45](https://github.com/yykamei/rails_band/issues/45)
+
+**Merged pull requests:**
+
+- Avoid using :require to reserve @logging\_context [\#46](https://github.com/yykamei/rails_band/pull/46) ([yykamei](https://github.com/yykamei))
+
 ## [v0.4.0](https://github.com/yykamei/rails_band/tree/v0.4.0) (2021-11-19)
 
 [Full Changelog](https://github.com/yykamei/rails_band/compare/v0.3.0...v0.4.0)
