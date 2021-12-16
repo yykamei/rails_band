@@ -15,6 +15,7 @@
 
 **Merged pull requests:**
 
+- Support Rails 7 🎉 [\#48](https://github.com/yykamei/rails_band/pull/48) ([yykamei](https://github.com/yykamei))
 - Avoid using :require to reserve @logging\_context [\#46](https://github.com/yykamei/rails_band/pull/46) ([yykamei](https://github.com/yykamei))
 
 ## [v0.4.0](https://github.com/yykamei/rails_band/tree/v0.4.0) (2021-11-19)
