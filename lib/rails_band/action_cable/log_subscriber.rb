@@ -4,6 +4,7 @@ require 'rails_band/action_cable/event/perform_action'
 require 'rails_band/action_cable/event/transmit'
 require 'rails_band/action_cable/event/transmit_subscription_confirmation'
 require 'rails_band/action_cable/event/transmit_subscription_rejection'
+require 'rails_band/action_cable/event/broadcast'
 
 module RailsBand
   module ActionCable
@@ -25,6 +26,10 @@ module RailsBand
 
       def transmit_subscription_rejection(event)
         consumer_of(__method__)&.call(Event::TransmitSubscriptionRejection.new(event))
+      end
+
+      def broadcast(event)
+        consumer_of(__method__)&.call(Event::Broadcast.new(event))
       end
 
       private

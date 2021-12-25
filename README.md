@@ -133,7 +133,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`transmit.action_cable`](https://guides.rubyonrails.org/active_support_instrumentation.html#transmit-action-cable)                                                     | ✅        |
 | [`transmit_subscription_confirmation.action_cable`](https://guides.rubyonrails.org/active_support_instrumentation.html#transmit-subscription-confirmation-action-cable) | ✅        |
 | [`transmit_subscription_rejection.action_cable`](https://guides.rubyonrails.org/active_support_instrumentation.html#transmit-subscription-rejection-action-cable)       | ✅        |
-| [`broadcast.action_cable`](https://guides.rubyonrails.org/active_support_instrumentation.html#broadcast-action-cable)                                                   |           |
+| [`broadcast.action_cable`](https://guides.rubyonrails.org/active_support_instrumentation.html#broadcast-action-cable)                                                   | ✅        |
 
 ### Active Storage
 
