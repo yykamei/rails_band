@@ -14,6 +14,7 @@ module ApplicationCable
 
     def subscribed
       stream_from "nice_#{params[:number]}"
+      reject if Integer(params[:number], exception: false).negative?
     end
   end
 end
