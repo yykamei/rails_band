@@ -4,6 +4,8 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: "20 12 * * *"
 jobs:
   test:
     name: Test on Ruby ${{ matrix.ruby }} with Rails ${{ matrix.rails }}
