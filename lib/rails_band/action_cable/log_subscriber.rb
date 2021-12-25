@@ -2,6 +2,7 @@
 
 require 'rails_band/action_cable/event/perform_action'
 require 'rails_band/action_cable/event/transmit'
+require 'rails_band/action_cable/event/transmit_subscription_confirmation'
 
 module RailsBand
   module ActionCable
@@ -15,6 +16,10 @@ module RailsBand
 
       def transmit(event)
         consumer_of(__method__)&.call(Event::Transmit.new(event))
+      end
+
+      def transmit_subscription_confirmation(event)
+        consumer_of(__method__)&.call(Event::TransmitSubscriptionConfirmation.new(event))
       end
 
       private
