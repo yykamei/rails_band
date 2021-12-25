@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Support transmit\_subscription\_confirmation.action\_cable [\#50](https://github.com/yykamei/rails_band/pull/50) ([yykamei](https://github.com/yykamei))
 - Support transmit.action\_cable [\#43](https://github.com/yykamei/rails_band/pull/43) ([yykamei](https://github.com/yykamei))
 - Support perform\_action.action\_cable [\#40](https://github.com/yykamei/rails_band/pull/40) ([yykamei](https://github.com/yykamei))
 
