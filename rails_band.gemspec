@@ -19,5 +19,5 @@ Gem::Specification.new do |spec|
   spec.files = Dir['lib/**/*', 'LICENSE', 'Rakefile', 'README.md']
 
   spec.required_ruby_version = '>= 2.6'
-  spec.add_dependency 'rails', '>= 6.0'
+  spec.add_dependency 'rails', '>= 6.0', '!= 7.0.0'
 end
