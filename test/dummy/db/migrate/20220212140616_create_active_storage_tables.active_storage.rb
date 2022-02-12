@@ -9,7 +9,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
       t.string   :filename,     null: false
       t.string   :content_type
       t.text     :metadata
-      t.string   :service_name, null: false
+      t.string   :service_name, null: true # Allow NULL to test for Rails 6.0
       t.bigint   :byte_size,    null: false
       t.string   :checksum
 
