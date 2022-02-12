@@ -35,4 +35,8 @@ module RailsBand
   module ActionCable
     autoload :LogSubscriber, 'rails_band/action_cable/log_subscriber'
   end
+
+  module ActiveStorage
+    autoload :LogSubscriber, 'rails_band/active_storage/log_subscriber'
+  end
 end

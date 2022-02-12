@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   end
 
   resources :yay, only: %i[index show]
+
+  resources :teams, only: %i[create show]
 end
