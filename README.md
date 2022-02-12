@@ -139,7 +139,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 
 | Event name                                                                                                                                                  | Supported |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| [`service_upload.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-upload-active-storage)                         |           |
+| [`service_upload.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-upload-active-storage)                         | ✅        |
 | [`service_streaming_download.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-streaming-download-active-storage) |           |
 | [`service_download_chunk.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-download-chunk-active-storage)         |           |
 | [`service_download.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-download-active-storage)                     |           |
