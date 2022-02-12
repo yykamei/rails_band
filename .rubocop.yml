@@ -8,6 +8,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
+    - '**/*_create_active_storage_tables.active_storage.rb'
 
 Metrics/ClassLength:
   Exclude:

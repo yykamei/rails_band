@@ -34,6 +34,10 @@ module RailsBand
         RailsBand::ActionCable::LogSubscriber.attach_to :action_cable
       end
 
+      if defined?(::ActiveStorage)
+        RailsBand::ActiveStorage::LogSubscriber.attach_to :active_storage
+      end
+
       RailsBand::ActiveSupport::LogSubscriber.attach_to :active_support
 
       if defined?(::ActiveJob)
