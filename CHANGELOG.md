@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/yykamei/rails_band/compare/v0.5.0...HEAD)
 
+**Implemented enhancements:**
+
+- Support service\_upload.active\_storage [\#59](https://github.com/yykamei/rails_band/pull/59) ([yykamei](https://github.com/yykamei))
+
 **Merged pull requests:**
 
 - Support Ruby 3.1 [\#57](https://github.com/yykamei/rails_band/pull/57) ([yykamei](https://github.com/yykamei))
