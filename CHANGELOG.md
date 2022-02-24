@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Support service\_streaming\_download.active\_storage [\#61](https://github.com/yykamei/rails_band/pull/61) ([yykamei](https://github.com/yykamei))
 - Support service\_upload.active\_storage [\#59](https://github.com/yykamei/rails_band/pull/59) ([yykamei](https://github.com/yykamei))
 
 **Merged pull requests:**
