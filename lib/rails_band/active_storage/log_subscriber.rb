@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_band/active_storage/event/service_upload'
+require 'rails_band/active_storage/event/service_streaming_download'
 
 module RailsBand
   module ActiveStorage
@@ -10,6 +11,10 @@ module RailsBand
 
       def service_upload(event)
         consumer_of(__method__)&.call(Event::ServiceUpload.new(event))
+      end
+
+      def service_streaming_download(event)
+        consumer_of(__method__)&.call(Event::ServiceStreamingDownload.new(event))
       end
 
       private

@@ -3,6 +3,9 @@
 class TeamsController < ApplicationController
   def create
     team = Team.create!(params.require(:team).permit(:name, :avatar))
+    team.avatar.download do |data|
+      logger.debug(data.size)
+    end
     redirect_to team_path(team)
   end
 end
