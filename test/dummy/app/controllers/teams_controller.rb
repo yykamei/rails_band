@@ -6,7 +6,8 @@ class TeamsController < ApplicationController
     team.avatar.download do |data|
       logger.debug(data.size)
     end
-    team.avatar.blob.download_chunk(0...40) do |data|
+    service = Gem::Version.new(Rails.version) >= Gem::Version.new('7.0') ? team.avatar.blob : team.avatar.service
+    service.download_chunk(0...40) do |data|
       logger.debug(data.size)
     end
     redirect_to team_path(team)
