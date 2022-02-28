@@ -6,6 +6,9 @@ class TeamsController < ApplicationController
     team.avatar.download do |data|
       logger.debug(data.size)
     end
+    team.avatar.download_chunk(0...40) do |data|
+      logger.debug(data.size)
+    end
     redirect_to team_path(team)
   end
 end
