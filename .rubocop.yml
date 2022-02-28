@@ -10,6 +10,10 @@ AllCops:
     - 'vendor/**/*'
     - '**/*_create_active_storage_tables.active_storage.rb'
 
+Metrics/AbcSize:
+  Exclude:
+    - 'test/dummy/**/*.rb'
+
 Metrics/ClassLength:
   Exclude:
     - 'test/**/*_test.rb'
