@@ -19,4 +19,4 @@ Rails.application.routes.draw do
   resources :teams, only: %i[create show]
 end
 
-Rails.application.default_url_options[:host] = 'www.example.com'
+Rails.application.default_url_options = { host: 'www.example.com' }
