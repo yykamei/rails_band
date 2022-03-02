@@ -146,7 +146,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`service_delete.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-delete-active-storage)                         | ✅        |
 | [`service_delete_prefixed.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-delete-prefixed-active-storage)       | ✅        |
 | [`service_exist.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-exist-active-storage)                           | ✅        |
-| [`service_url.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-url-active-storage)                               |           |
+| [`service_url.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-url-active-storage)                               | ✅        |
 | [`service_update_metadata.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#service-update-metadata-active-storage)       |           |
 | [`preview.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#preview-active-storage)                                       |           |
 | [`analyze.active_storage`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#analyze-active-storage)                                   |           |

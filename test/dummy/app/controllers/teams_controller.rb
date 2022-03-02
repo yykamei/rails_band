@@ -11,6 +11,10 @@ class TeamsController < ApplicationController
     # For service_download
     team.avatar.download
 
+    # For service_url
+    Rails.application.default_url_options[:host] = 'service_url.example.com'
+    team.avatar.service_url_for_direct_upload
+
     service = ActiveStorage::Blob.service
     service.download_chunk(team.avatar.blob.key, 0...40) do |data|
       # For service_download_chunk

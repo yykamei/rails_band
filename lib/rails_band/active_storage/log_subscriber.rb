@@ -7,6 +7,7 @@ require 'rails_band/active_storage/event/service_download'
 require 'rails_band/active_storage/event/service_delete'
 require 'rails_band/active_storage/event/service_delete_prefixed'
 require 'rails_band/active_storage/event/service_exist'
+require 'rails_band/active_storage/event/service_url'
 
 module RailsBand
   module ActiveStorage
@@ -40,6 +41,10 @@ module RailsBand
 
       def service_exist(event)
         consumer_of(__method__)&.call(Event::ServiceExist.new(event))
+      end
+
+      def service_url(event)
+        consumer_of(__method__)&.call(Event::ServiceUrl.new(event))
       end
 
       private
