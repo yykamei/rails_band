@@ -2,7 +2,11 @@
 
 class TeamsController < ApplicationController
   def create
-    ActiveStorage::Current.url_options = { host: 'www.example.com' }
+    if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
+      ActiveStorage::Current.url_options = { host: 'www.example.com' }
+    else
+      ActiveStorage::Current.host = 'www.example.com'
+    end
 
     team = Team.create!(params.require(:team).permit(:name, :avatar))
     team.avatar.download do |data|
