@@ -18,6 +18,10 @@ Metrics/ClassLength:
   Exclude:
     - 'test/**/*_test.rb'
 
+Metrics/MethodLength:
+  Exclude:
+    - 'test/dummy/**/*.rb'
+
 # `assert_equal([], object)` and `assert_equal({}, object)` are completely different,
 # so this cop does not make sense to me.
 Minitest/AssertEmptyLiteral:
