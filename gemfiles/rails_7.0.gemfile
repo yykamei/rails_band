@@ -5,5 +5,6 @@ source 'https://rubygems.org'
 gem 'puma'
 gem 'rails', '~> 7.0.0'
 gem 'sqlite3'
+gem 'image_processing', '~> 1.2'
 
 gemspec path: '../'
