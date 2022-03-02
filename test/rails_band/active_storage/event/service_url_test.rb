@@ -84,6 +84,6 @@ class ServiceUrlTest < ActionDispatch::IntegrationTest
 
   test 'returns the url' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-    assert @event.url.starts_with?('http://service_url.example.com/rails/active_storage/disk')
+    assert @event.url.starts_with?('http://www.example.com/rails/active_storage/disk')
   end
 end

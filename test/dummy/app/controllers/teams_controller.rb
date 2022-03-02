@@ -12,7 +12,6 @@ class TeamsController < ApplicationController
     team.avatar.download
 
     # For service_url
-    Rails.application.default_url_options[:host] = 'service_url.example.com'
     team.avatar.service_url_for_direct_upload
 
     service = ActiveStorage::Blob.service
