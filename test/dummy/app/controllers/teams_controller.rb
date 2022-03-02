@@ -4,8 +4,13 @@ class TeamsController < ApplicationController
   def create
     team = Team.create!(params.require(:team).permit(:name, :avatar))
     team.avatar.download do |data|
+      # For service_streaming_download
       logger.debug(data.size)
     end
+
+    # For service_download
+    team.avatar.download
+
     service = ActiveStorage::Blob.service
     service.download_chunk(team.avatar.blob.key, 0...40) do |data|
       logger.debug(data.size)

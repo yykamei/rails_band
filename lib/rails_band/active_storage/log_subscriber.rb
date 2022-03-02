@@ -3,6 +3,7 @@
 require 'rails_band/active_storage/event/service_upload'
 require 'rails_band/active_storage/event/service_streaming_download'
 require 'rails_band/active_storage/event/service_download_chunk'
+require 'rails_band/active_storage/event/service_download'
 
 module RailsBand
   module ActiveStorage
@@ -20,6 +21,10 @@ module RailsBand
 
       def service_download_chunk(event)
         consumer_of(__method__)&.call(Event::ServiceDownloadChunk.new(event))
+      end
+
+      def service_download(event)
+        consumer_of(__method__)&.call(Event::ServiceDownload.new(event))
       end
 
       private
