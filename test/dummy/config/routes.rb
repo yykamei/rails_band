@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-Rails.application.routes.default_url_options = { host: 'www.example.com' }
-
 Rails.application.routes.draw do
   resources :users do
     get :flawed
