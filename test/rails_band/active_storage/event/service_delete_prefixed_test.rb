@@ -74,7 +74,7 @@ class ServiceDeletePrefixedTest < ActionDispatch::IntegrationTest
 
   test 'returns the prefix' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-    assert_equal @event.prefix, 'my-prefix'
+    assert_equal 'my-prefix', @event.prefix
   end
 
   test 'returns the service' do
