@@ -40,7 +40,7 @@ class TeamsController < ApplicationController
       key: 'my-key',
       service: 'Disk',
       content_type: 'Content-Type!',
-      disposition: 'Disposition',
+      disposition: 'Disposition'
     }
     ActiveSupport::Notifications.instrument('service_update_metadata.active_storage', **payload) do
       logger.debug(payload)
