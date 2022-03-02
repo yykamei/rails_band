@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Support service\_delete\_prefixed.active\_storage [\#70](https://github.com/yykamei/rails_band/pull/70) ([yykamei](https://github.com/yykamei))
 - Support service\_delete.active\_storage [\#67](https://github.com/yykamei/rails_band/pull/67) ([yykamei](https://github.com/yykamei))
 - Support service\_download.active\_storage [\#65](https://github.com/yykamei/rails_band/pull/65) ([yykamei](https://github.com/yykamei))
 - Support service\_download\_chunk.active\_storage [\#63](https://github.com/yykamei/rails_band/pull/63) ([yykamei](https://github.com/yykamei))
