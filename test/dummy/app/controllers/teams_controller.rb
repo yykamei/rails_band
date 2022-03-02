@@ -13,8 +13,13 @@ class TeamsController < ApplicationController
 
     service = ActiveStorage::Blob.service
     service.download_chunk(team.avatar.blob.key, 0...40) do |data|
+      # For service_download_chunk
       logger.debug(data.size)
     end
+
+    # For service_delete
+    service.delete(team.avatar.blob.key)
+
     redirect_to team_path(team)
   end
 end
