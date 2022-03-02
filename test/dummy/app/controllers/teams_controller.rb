@@ -2,7 +2,7 @@
 
 class TeamsController < ApplicationController
   def create
-    Rails.application.routes.default_url_options = { host: 'www.example.com' }
+    ActiveStorage::Current.url_options = { host: 'www.example.com' }
 
     team = Team.create!(params.require(:team).permit(:name, :avatar))
     team.avatar.download do |data|
