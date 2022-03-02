@@ -20,6 +20,9 @@ class TeamsController < ApplicationController
     # For service_delete
     service.delete(team.avatar.blob.key)
 
+    # For service_delete_prefixed
+    service.delete_prefixed('my-prefix')
+
     redirect_to team_path(team)
   end
 end
