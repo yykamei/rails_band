@@ -2,6 +2,12 @@
 
 class TeamsController < ApplicationController
   def create
+    if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
+      ActiveStorage::Current.url_options = { host: 'www.example.com' }
+    else
+      ActiveStorage::Current.host = 'www.example.com'
+    end
+
     team = Team.create!(params.require(:team).permit(:name, :avatar))
     team.avatar.download do |data|
       # For service_streaming_download
@@ -10,6 +16,9 @@ class TeamsController < ApplicationController
 
     # For service_download
     team.avatar.download
+
+    # For service_url
+    team.avatar.service_url_for_direct_upload
 
     service = ActiveStorage::Blob.service
     service.download_chunk(team.avatar.blob.key, 0...40) do |data|
