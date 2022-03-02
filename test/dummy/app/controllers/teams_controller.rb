@@ -35,6 +35,17 @@ class TeamsController < ApplicationController
     # For service_exist
     service.exist?(team.avatar.blob.key)
 
+    # HACK: service_update_metadata.active_storage is supported in GCS service only, so this test imitates the behavior.
+    payload = {
+      key: 'my-key',
+      service: 'Disk',
+      content_type: 'Content-Type!',
+      disposition: 'Disposition',
+    }
+    ActiveSupport::Notifications.instrument('service_update_metadata.active_storage', **payload) do
+      logger.debug(payload)
+    end
+
     redirect_to team_path(team)
   end
 end
