@@ -2,10 +2,10 @@
 
 source 'https://rubygems.org'
 
+gem 'image_processing', '~> 1.2'
 gem 'net-smtp', require: false if RUBY_VERSION >= '3.1'
 gem 'puma'
 gem 'rails', '~> 6.1.0'
 gem 'sqlite3'
-gem 'image_processing', '~> 1.2'
 
 gemspec path: '../'

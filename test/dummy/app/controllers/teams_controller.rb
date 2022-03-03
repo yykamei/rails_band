@@ -49,7 +49,12 @@ class TeamsController < ApplicationController
     team = Team.create!(params.require(:team).permit(:name, :avatar))
 
     # For preview
-    team.avatar.preview(resize_to_limit: [100, 100]).processed.url
+    # TODO: Previewing video files requires system packages.
+    #       I want to test it by just mocking with ActiveSupport::Notifications for now.
+    # team.avatar.preview(resize_to_limit: [100, 100]).processed.url
+    ActiveSupport::Notifications.instrument('preview.active_storage', key: 'my-key') do
+      logger.debug('preview.active_storage')
+    end
 
     redirect_to team_path(team)
   end

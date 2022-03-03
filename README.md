@@ -167,10 +167,6 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 
 Contributing is welcome 😄 Please open a pull request!
 
-### Testing
-
-If you want to run the tests in your machine, libvips is required.
-
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

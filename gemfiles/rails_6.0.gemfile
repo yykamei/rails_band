@@ -2,11 +2,11 @@
 
 source 'https://rubygems.org'
 
+gem 'image_processing', '~> 1.2'
 gem 'net-smtp', require: false if RUBY_VERSION >= '3.1'
 gem 'psych', '~> 3.0'
 gem 'puma'
 gem 'rails', '~> 6.0.0'
 gem 'sqlite3'
-gem 'image_processing', '~> 1.2'
 
 gemspec path: '../'
