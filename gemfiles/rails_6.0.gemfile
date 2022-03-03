@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'mini_magick'
 gem 'net-smtp', require: false if RUBY_VERSION >= '3.1'
 gem 'psych', '~> 3.0'
 gem 'puma'

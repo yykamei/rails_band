@@ -59,6 +59,15 @@ class TeamsController < ApplicationController
     redirect_to team_path(team)
   end
 
+  def analyze
+    team = Team.create!(params.require(:team).permit(:name, :avatar))
+
+    # For analyze.active_storage
+    ActiveStorage::Analyzer::ImageAnalyzer::ImageMagick.new(team.avatar).metadata
+
+    redirect_to team_path(team)
+  end
+
   private
 
   def set_host
