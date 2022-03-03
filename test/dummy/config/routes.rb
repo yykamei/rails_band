@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :yay, only: %i[index show]
 
   resources :teams, only: %i[create show]
+  post '/teams/preview', to: 'teams#preview'
 end

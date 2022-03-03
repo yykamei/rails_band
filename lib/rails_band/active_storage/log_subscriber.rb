@@ -9,6 +9,7 @@ require 'rails_band/active_storage/event/service_delete_prefixed'
 require 'rails_band/active_storage/event/service_exist'
 require 'rails_band/active_storage/event/service_url'
 require 'rails_band/active_storage/event/service_update_metadata'
+require 'rails_band/active_storage/event/preview'
 
 module RailsBand
   module ActiveStorage
@@ -50,6 +51,10 @@ module RailsBand
 
       def service_update_metadata(event)
         consumer_of(__method__)&.call(Event::ServiceUpdateMetadata.new(event))
+      end
+
+      def preview(event)
+        consumer_of(__method__)&.call(Event::Preview.new(event))
       end
 
       private
