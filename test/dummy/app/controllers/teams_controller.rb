@@ -63,7 +63,7 @@ class TeamsController < ApplicationController
     team = Team.create!(params.require(:team).permit(:name, :avatar))
 
     # For analyze.active_storage
-    if Gem::Version(Rails.version) >= Gem::Version.new('7.0')
+    if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
       ActiveStorage::Analyzer::ImageAnalyzer::ImageMagick.new(team.avatar).metadata
     else
       ActiveStorage::Analyzer::ImageAnalyzer.new(team.avatar).metadata
