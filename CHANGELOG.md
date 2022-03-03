@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Support preview.active\_storage [\#78](https://github.com/yykamei/rails_band/pull/78) ([yykamei](https://github.com/yykamei))
 - Support Ruby 3.1 [\#57](https://github.com/yykamei/rails_band/pull/57) ([yykamei](https://github.com/yykamei))
 
 ## [v0.5.0](https://github.com/yykamei/rails_band/tree/v0.5.0) (2021-12-25)
