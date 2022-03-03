@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Support analyze.active\_storage [\#81](https://github.com/yykamei/rails_band/pull/81) ([yykamei](https://github.com/yykamei))
 - Support service\_update\_metadata.active\_storage [\#76](https://github.com/yykamei/rails_band/pull/76) ([yykamei](https://github.com/yykamei))
 - Support service\_url.active\_storage [\#74](https://github.com/yykamei/rails_band/pull/74) ([yykamei](https://github.com/yykamei))
 - Support service\_exist.active\_storage [\#72](https://github.com/yykamei/rails_band/pull/72) ([yykamei](https://github.com/yykamei))
