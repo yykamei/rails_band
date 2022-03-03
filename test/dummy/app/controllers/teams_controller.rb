@@ -68,6 +68,15 @@ class TeamsController < ApplicationController
     redirect_to team_path(team)
   end
 
+  def transform
+    team = Team.create!(params.require(:team).permit(:name, :avatar))
+
+    # For transform.active_storage
+    team.avatar.variant(resize_to_limit: [100, 100]).processed
+
+    redirect_to team_path(team)
+  end
+
   private
 
   def set_host
