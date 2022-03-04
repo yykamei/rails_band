@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development do
+  gem 'image_processing', '~> 1.2'
   gem 'mini_magick'
   gem 'rubocop', require: false
   gem 'rubocop-minitest', require: false

@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :teams, only: %i[create show]
   post '/teams/preview', to: 'teams#preview'
   post '/teams/analyze', to: 'teams#analyze'
+  post '/teams/transform', to: 'teams#transform'
 end

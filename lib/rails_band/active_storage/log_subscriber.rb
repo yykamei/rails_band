@@ -10,6 +10,7 @@ require 'rails_band/active_storage/event/service_exist'
 require 'rails_band/active_storage/event/service_url'
 require 'rails_band/active_storage/event/service_update_metadata'
 require 'rails_band/active_storage/event/preview'
+require 'rails_band/active_storage/event/transform'
 require 'rails_band/active_storage/event/analyze'
 
 module RailsBand
@@ -56,6 +57,10 @@ module RailsBand
 
       def preview(event)
         consumer_of(__method__)&.call(Event::Preview.new(event))
+      end
+
+      def transform(event)
+        consumer_of(__method__)&.call(Event::Transform.new(event))
       end
 
       def analyze(event)
