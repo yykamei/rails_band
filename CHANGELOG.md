@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/yykamei/rails_band/tree/HEAD)
+
+[Full Changelog](https://github.com/yykamei/rails_band/compare/v0.6.0...HEAD)
+
+**Merged pull requests:**
+
+- Bump actions/checkout from 2 to 3 [\#85](https://github.com/yykamei/rails_band/pull/85) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.6.0](https://github.com/yykamei/rails_band/tree/v0.6.0) (2022-03-04)
 
 [Full Changelog](https://github.com/yykamei/rails_band/compare/v0.5.0...v0.6.0)
