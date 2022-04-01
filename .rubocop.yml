@@ -36,10 +36,6 @@ Minitest/RefuteFalse:
 Metrics/BlockLength:
   Max: 50
 
-# I want to enable this, but it's difficult to publish the gem via GitHub Actions.
-Gemspec/RequireMFA:
-  Enabled: false
-
 # I don't care the style of if/unless.
 Style/IfUnlessModifier:
   Enabled: false
