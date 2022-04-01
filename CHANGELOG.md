@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/yykamei/rails_band/tree/HEAD)
+## [v0.6.1](https://github.com/yykamei/rails_band/tree/v0.6.1) (2022-04-01)
 
-[Full Changelog](https://github.com/yykamei/rails_band/compare/v0.6.0...HEAD)
+[Full Changelog](https://github.com/yykamei/rails_band/compare/v0.6.0...v0.6.1)
 
 **Fixed bugs:**
 
