@@ -43,6 +43,9 @@ module RailsBand
       RailsBand::ActiveSupport::LogSubscriber.consumers = consumers
       RailsBand::ActiveSupport::LogSubscriber.attach_to :active_support
 
+      RailsBand::DeprecationSubscriber.consumers = consumers
+      RailsBand::DeprecationSubscriber.attach_to :rails
+
       if defined?(::ActiveJob)
         require 'active_job/logging'
 

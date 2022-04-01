@@ -93,6 +93,12 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def deprecation
+    ActiveSupport::Deprecation.behavior = :notify
+    ActiveSupport::Deprecation.warn('deprecated!!!')
+    redirect_to users_path
+  end
+
   private
 
   def halt!

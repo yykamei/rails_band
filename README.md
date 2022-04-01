@@ -162,7 +162,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 
 | Event name                                                                                                  | Supported |
 | ----------------------------------------------------------------------------------------------------------- | --------- |
-| [`deprecation.rails`](https://guides.rubyonrails.org/active_support_instrumentation.html#deprecation-rails) |           |
+| [`deprecation.rails`](https://guides.rubyonrails.org/active_support_instrumentation.html#deprecation-rails) | ✅        |
 
 ## Contributing
 
