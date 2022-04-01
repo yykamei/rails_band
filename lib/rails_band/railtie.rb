@@ -31,13 +31,16 @@ module RailsBand
       end
 
       if defined?(::ActionCable)
+        RailsBand::ActionCable::LogSubscriber.consumers = consumers
         RailsBand::ActionCable::LogSubscriber.attach_to :action_cable
       end
 
       if defined?(::ActiveStorage)
+        RailsBand::ActiveStorage::LogSubscriber.consumers = consumers
         RailsBand::ActiveStorage::LogSubscriber.attach_to :active_storage
       end
 
+      RailsBand::ActiveSupport::LogSubscriber.consumers = consumers
       RailsBand::ActiveSupport::LogSubscriber.attach_to :active_support
 
       if defined?(::ActiveJob)
