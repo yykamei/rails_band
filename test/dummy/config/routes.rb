@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get :cache
     get :cache2
     get :cache3
+    get :deprecation
   end
 
   resources :yay, only: %i[index show]
