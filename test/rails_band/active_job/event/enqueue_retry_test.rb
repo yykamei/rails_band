@@ -30,11 +30,6 @@ class EnqueueRetryTest < ActionDispatch::IntegrationTest
     assert_instance_of String, @event.transaction_id
   end
 
-  test 'returns children' do
-    FlakyJob.perform_now
-    assert_instance_of Array, @event.children
-  end
-
   test 'returns cpu_time' do
     FlakyJob.perform_now
     assert_instance_of Float, @event.cpu_time
@@ -57,7 +52,7 @@ class EnqueueRetryTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     FlakyJob.perform_now
-    %i[name time end transaction_id children cpu_time idle_time allocations duration adapter job
+    %i[name time end transaction_id cpu_time idle_time allocations duration adapter job
        wait error].each do |key|
       assert_includes @event.to_h, key
     end

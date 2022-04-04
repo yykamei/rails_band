@@ -45,11 +45,6 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
       assert_instance_of String, @event.transaction_id
     end
 
-    test 'returns children' do
-      get "/users/#{@user.id}/notes"
-      assert_instance_of Array, @event.children
-    end
-
     test 'returns cpu_time' do
       get "/users/#{@user.id}/notes"
       assert_instance_of Float, @event.cpu_time
@@ -72,7 +67,7 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
 
     test 'calls #to_h' do
       get "/users/#{@user.id}/notes"
-      %i[name time end transaction_id children cpu_time idle_time allocations duration owner
+      %i[name time end transaction_id cpu_time idle_time allocations duration owner
          reflection].each do |key|
         assert_includes @event.to_h, key
       end
