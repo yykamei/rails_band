@@ -30,11 +30,6 @@ class TransformTest < ActionDispatch::IntegrationTest
     assert_instance_of String, @event.transaction_id
   end
 
-  test 'returns children' do
-    post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-    assert_instance_of Array, @event.children
-  end
-
   test 'returns cpu_time' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
     assert_instance_of Float, @event.cpu_time
@@ -57,7 +52,7 @@ class TransformTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-    %i[name time end transaction_id children cpu_time idle_time allocations duration].each do |key|
+    %i[name time end transaction_id cpu_time idle_time allocations duration].each do |key|
       assert_includes @event.to_h, key
     end
   end

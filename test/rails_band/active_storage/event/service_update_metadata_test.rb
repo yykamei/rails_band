@@ -30,11 +30,6 @@ class ServiceUpdateMetadataTest < ActionDispatch::IntegrationTest
     assert_instance_of String, @event.transaction_id
   end
 
-  test 'returns children' do
-    post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-    assert_instance_of Array, @event.children
-  end
-
   test 'returns cpu_time' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
     assert_instance_of Float, @event.cpu_time
@@ -57,7 +52,7 @@ class ServiceUpdateMetadataTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-    %i[name time end transaction_id children cpu_time idle_time allocations duration key service
+    %i[name time end transaction_id cpu_time idle_time allocations duration key service
        content_type disposition].each do |key|
       assert_includes @event.to_h, key
     end

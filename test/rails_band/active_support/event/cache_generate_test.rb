@@ -31,11 +31,6 @@ class CacheGenerateTest < ActionDispatch::IntegrationTest
     assert_instance_of String, @event.transaction_id
   end
 
-  test 'returns children' do
-    get "/users/#{@user.id}/cache"
-    assert_instance_of Array, @event.children
-  end
-
   test 'returns cpu_time' do
     get "/users/#{@user.id}/cache"
     assert_instance_of Float, @event.cpu_time
@@ -58,7 +53,7 @@ class CacheGenerateTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get "/users/#{@user.id}/cache"
-    %i[name time end transaction_id children cpu_time idle_time allocations duration key].each do |key|
+    %i[name time end transaction_id cpu_time idle_time allocations duration key].each do |key|
       assert_includes @event.to_h, key
     end
   end

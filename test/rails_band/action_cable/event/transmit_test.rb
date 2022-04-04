@@ -36,12 +36,6 @@ class TransmitTest < ::ActionCable::Channel::TestCase
     assert_instance_of String, @event.transaction_id
   end
 
-  test 'returns children' do
-    subscribe number: '2'
-    perform :call_transmit, { name: 'J' }
-    assert_instance_of Array, @event.children
-  end
-
   test 'returns cpu_time' do
     subscribe number: '2'
     perform :call_transmit, { name: 'J' }
@@ -69,8 +63,7 @@ class TransmitTest < ::ActionCable::Channel::TestCase
   test 'calls #to_h' do
     subscribe number: '2'
     perform :call_transmit, { name: 'J' }
-    %i[name time end transaction_id children cpu_time idle_time allocations duration
-       channel_class data via].each do |key|
+    %i[name time end transaction_id cpu_time idle_time allocations duration channel_class data via].each do |key|
       assert_includes @event.to_h, key
     end
   end
