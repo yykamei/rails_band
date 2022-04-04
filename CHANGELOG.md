@@ -8,6 +8,10 @@
 
 - Remove `#children` fron `BaseEvent` [\#90](https://github.com/yykamei/rails_band/pull/90) ([yykamei](https://github.com/yykamei))
 
+**Implemented enhancements:**
+
+- Support deprecation.rails [\#89](https://github.com/yykamei/rails_band/pull/89) ([yykamei](https://github.com/yykamei))
+
 ## [v0.6.1](https://github.com/yykamei/rails_band/tree/v0.6.1) (2022-04-01)
 
 [Full Changelog](https://github.com/yykamei/rails_band/compare/v0.6.0...v0.6.1)
