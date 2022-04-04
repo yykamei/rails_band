@@ -42,14 +42,6 @@ class RetryStoppedTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'returns children' do
-    perform_enqueued_jobs do
-      FlakyJob.perform_later
-    rescue FlakyJob::Error
-      assert_instance_of Array, @event.children
-    end
-  end
-
   test 'returns cpu_time' do
     perform_enqueued_jobs do
       FlakyJob.perform_later
@@ -86,7 +78,7 @@ class RetryStoppedTest < ActionDispatch::IntegrationTest
     perform_enqueued_jobs do
       FlakyJob.perform_later
     rescue FlakyJob::Error
-      %i[name time end transaction_id children cpu_time idle_time allocations duration adapter job error].each do |key|
+      %i[name time end transaction_id cpu_time idle_time allocations duration adapter job error].each do |key|
         assert_includes @event.to_h, key
       end
     end

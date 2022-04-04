@@ -32,11 +32,6 @@ class TransmitSubscriptionRejectionTest < ::ActionCable::Channel::TestCase
     assert_instance_of String, @event.transaction_id
   end
 
-  test 'returns children' do
-    subscribe number: '-3'
-    assert_instance_of Array, @event.children
-  end
-
   test 'returns cpu_time' do
     subscribe number: '-3'
     assert_instance_of Float, @event.cpu_time
@@ -59,7 +54,7 @@ class TransmitSubscriptionRejectionTest < ::ActionCable::Channel::TestCase
 
   test 'calls #to_h' do
     subscribe number: '-3'
-    %i[name time end transaction_id children cpu_time idle_time allocations duration channel_class].each do |key|
+    %i[name time end transaction_id cpu_time idle_time allocations duration channel_class].each do |key|
       assert_includes @event.to_h, key
     end
   end

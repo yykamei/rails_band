@@ -31,11 +31,6 @@ class RedirectToTest < ActionDispatch::IntegrationTest
     assert_instance_of String, @event.transaction_id
   end
 
-  test 'returns children' do
-    get '/users/123/redirect'
-    assert_instance_of Array, @event.children
-  end
-
   test 'returns cpu_time' do
     get '/users/123/redirect'
     assert_instance_of Float, @event.cpu_time
@@ -58,7 +53,7 @@ class RedirectToTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get '/users/123/redirect'
-    %i[name time end transaction_id children cpu_time idle_time allocations duration
+    %i[name time end transaction_id cpu_time idle_time allocations duration
        status location].each do |key|
       assert_includes @event.to_h, key
     end
