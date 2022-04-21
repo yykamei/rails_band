@@ -16,7 +16,7 @@ module RailsBand
         def layout
           return @layout if defined? @layout
 
-          @layout = @event.payload[:layout]&.yield_self { |layout| from_views(layout) }
+          @layout = @event.payload[:layout]&.then { |layout| from_views(layout) }
         end
       end
     end
