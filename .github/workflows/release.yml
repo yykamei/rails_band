@@ -44,7 +44,7 @@ jobs:
 
       - run: gem build rails_band.gemspec
 
-      - run: gem push *.gem
+      - run: gem push ./*.gem
         env:
           GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
         if: github.event.inputs.apply == 'true'
