@@ -77,4 +77,11 @@ class EnqueueTest < ActionDispatch::IntegrationTest
     assert_instance_of YayJob, @event.job
     assert_equal [{ name: 'E!', message: 'This is E.' }], @event.job.arguments
   end
+
+  if Gem::Version.new(Rails.version) > Gem::Version.new('7.0')
+    test 'returns aborted' do
+      get '/yay/123?aborted=true'
+      assert @event.aborted
+    end
+  end
 end
