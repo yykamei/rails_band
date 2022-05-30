@@ -12,6 +12,14 @@ module RailsBand
         def job
           @job ||= @event.payload.fetch(:job)
         end
+
+        if Gem::Version.new(Rails.version) > Gem::Version.new('7.0')
+          define_method(:aborted) do
+            return @aborted if defined?(@aborted)
+
+            @aborted = @event.payload[:aborted]
+          end
+        end
       end
     end
   end
