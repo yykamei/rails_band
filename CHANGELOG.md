@@ -10,6 +10,7 @@
 
 **Implemented enhancements:**
 
+- Add \#abort in ActiveJob instrumentations [\#94](https://github.com/yykamei/rails_band/pull/94) ([yykamei](https://github.com/yykamei))
 - Support deprecation.rails [\#89](https://github.com/yykamei/rails_band/pull/89) ([yykamei](https://github.com/yykamei))
 
 ## [v0.6.1](https://github.com/yykamei/rails_band/tree/v0.6.1) (2022-04-01)
