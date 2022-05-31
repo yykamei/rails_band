@@ -10,6 +10,7 @@
 
 **Implemented enhancements:**
 
+- Support render\_layout.action\_view [\#96](https://github.com/yykamei/rails_band/pull/96) ([yykamei](https://github.com/yykamei))
 - Add \#abort in ActiveJob instrumentations [\#94](https://github.com/yykamei/rails_band/pull/94) ([yykamei](https://github.com/yykamei))
 - Support deprecation.rails [\#89](https://github.com/yykamei/rails_band/pull/89) ([yykamei](https://github.com/yykamei))
 
