@@ -3,6 +3,7 @@
 require 'rails_band/action_view/event/render_template'
 require 'rails_band/action_view/event/render_partial'
 require 'rails_band/action_view/event/render_collection'
+require 'rails_band/action_view/event/render_layout'
 
 module RailsBand
   module ActionView
@@ -20,6 +21,10 @@ module RailsBand
 
       def render_collection(event)
         consumer_of(__method__)&.call(Event::RenderCollection.new(event))
+      end
+
+      def render_layout(event)
+        consumer_of(__method__)&.call(Event::RenderLayout.new(event))
       end
 
       private

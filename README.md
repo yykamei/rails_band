@@ -82,7 +82,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`render_template.action_view`](https://guides.rubyonrails.org/active_support_instrumentation.html#render-template-action-view)     | ✅        |
 | [`render_partial.action_view`](https://guides.rubyonrails.org/active_support_instrumentation.html#render-partial-action-view)       | ✅        |
 | [`render_collection.action_view`](https://guides.rubyonrails.org/active_support_instrumentation.html#render-collection-action-view) | ✅        |
-| [`render_layout.action_view`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#render-layout-action-view)     |           |
+| [`render_layout.action_view`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#render-layout-action-view)     | ✅        |
 
 ### Active Record
 
