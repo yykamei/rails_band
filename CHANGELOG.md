@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/yykamei/rails_band/tree/HEAD)
+
+[Full Changelog](https://github.com/yykamei/rails_band/compare/v0.7.0...HEAD)
+
+**Implemented enhancements:**
+
+- Support process\_middleware.action\_dispatch [\#98](https://github.com/yykamei/rails_band/pull/98) ([yykamei](https://github.com/yykamei))
+
 ## [v0.7.0](https://github.com/yykamei/rails_band/tree/v0.7.0) (2022-05-31)
 
 [Full Changelog](https://github.com/yykamei/rails_band/compare/v0.6.1...v0.7.0)
