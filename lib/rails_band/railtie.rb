@@ -8,6 +8,13 @@ module RailsBand
   class Railtie < ::Rails::Railtie
     config.rails_band = Configuration.new
 
+    config.before_initialize do
+      # NOTE: `ActionDispatch::MiddlewareStack::InstrumentationProxy` will be called
+      #       only when `ActionDispatch::MiddlewareStack#build` detects `process_middleware.action_dispatch`
+      #       is listened to. So, `attach_to` must be called before Rack middlewares will be loaded.
+      RailsBand::ActionDispatch::LogSubscriber.attach_to :action_dispatch
+    end
+
     config.after_initialize do |app|
       consumers = app.config.rails_band.consumers
 
@@ -39,6 +46,8 @@ module RailsBand
         RailsBand::ActiveStorage::LogSubscriber.consumers = consumers
         RailsBand::ActiveStorage::LogSubscriber.attach_to :active_storage
       end
+
+      RailsBand::ActionDispatch::LogSubscriber.consumers = consumers
 
       RailsBand::ActiveSupport::LogSubscriber.consumers = consumers
       RailsBand::ActiveSupport::LogSubscriber.attach_to :active_support

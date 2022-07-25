@@ -25,6 +25,10 @@ module RailsBand
     autoload :LogSubscriber, 'rails_band/action_mailer/log_subscriber'
   end
 
+  module ActionDispatch
+    autoload :LogSubscriber, 'rails_band/action_dispatch/log_subscriber'
+  end
+
   module ActiveSupport
     autoload :LogSubscriber, 'rails_band/active_support/log_subscriber'
   end
