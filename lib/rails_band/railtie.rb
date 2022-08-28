@@ -12,6 +12,7 @@ module RailsBand
       # NOTE: `ActionDispatch::MiddlewareStack::InstrumentationProxy` will be called
       #       only when `ActionDispatch::MiddlewareStack#build` detects `process_middleware.action_dispatch`
       #       is listened to. So, `attach_to` must be called before Rack middlewares will be loaded.
+      ::ActionDispatch::LogSubscriber.detach_from :action_dispatch if defined?(::ActionDispatch::LogSubscriber)
       RailsBand::ActionDispatch::LogSubscriber.attach_to :action_dispatch
     end
 

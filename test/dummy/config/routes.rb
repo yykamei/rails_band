@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   post '/teams/preview', to: 'teams#preview'
   post '/teams/analyze', to: 'teams#analyze'
   post '/teams/transform', to: 'teams#transform'
+
+  get 'old_users', to: redirect('/users')
 end
