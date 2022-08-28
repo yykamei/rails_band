@@ -6,7 +6,12 @@
 
 **Implemented enhancements:**
 
+- Support redirect.action\_dispatch [\#101](https://github.com/yykamei/rails_band/pull/101) ([yykamei](https://github.com/yykamei))
 - Support process\_middleware.action\_dispatch [\#98](https://github.com/yykamei/rails_band/pull/98) ([yykamei](https://github.com/yykamei))
+
+**Closed issues:**
+
+- Unsubscribe `ActionDispatch::LogSubscriber` [\#100](https://github.com/yykamei/rails_band/issues/100)
 
 ## [v0.7.0](https://github.com/yykamei/rails_band/tree/v0.7.0) (2022-05-31)
 
