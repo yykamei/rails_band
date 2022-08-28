@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_band/action_dispatch/event/process_middleware'
+require 'rails_band/action_dispatch/event/redirect'
 
 module RailsBand
   module ActionDispatch
@@ -10,6 +11,10 @@ module RailsBand
 
       def process_middleware(event)
         consumer_of(__method__)&.call(Event::ProcessMiddleware.new(event))
+      end
+
+      def redirect(event)
+        consumer_of(__method__)&.call(Event::Redirect.new(event))
       end
 
       private
