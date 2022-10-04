@@ -53,7 +53,7 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
 
     test 'calls #to_h' do
       get '/old_users'
-      %i[name time end transaction_id cpu_time idle_time allocations duration status location].each do |key|
+      %i[name time end transaction_id cpu_time idle_time allocations duration status location request].each do |key|
         assert_includes @event.to_h, key
       end
     end
@@ -76,6 +76,11 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
     test 'returns the location' do
       get '/old_users'
       assert_equal 'http://www.example.com/users', @event.location
+    end
+
+    test 'returns the request' do
+      get '/old_users'
+      assert_kind_of ::ActionDispatch::Request, @event.request
     end
   end
 end

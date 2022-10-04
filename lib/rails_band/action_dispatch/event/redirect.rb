@@ -12,6 +12,10 @@ module RailsBand
         def location
           @location ||= @event.payload.fetch(:location)
         end
+
+        def request
+          @request ||= @event.payload.fetch(:request)
+        end
       end
     end
   end
