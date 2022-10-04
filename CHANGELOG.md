@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Add `:request` to `redirect.action_dispatch` [\#104](https://github.com/yykamei/rails_band/pull/104) ([yykamei](https://github.com/yykamei))
 - Support redirect.action\_dispatch [\#101](https://github.com/yykamei/rails_band/pull/101) ([yykamei](https://github.com/yykamei))
 - Support process\_middleware.action\_dispatch [\#98](https://github.com/yykamei/rails_band/pull/98) ([yykamei](https://github.com/yykamei))
 
