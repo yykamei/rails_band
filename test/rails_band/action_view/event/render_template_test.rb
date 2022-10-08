@@ -56,6 +56,9 @@ class RenderTemplateTest < ActionDispatch::IntegrationTest
     %i[name time end transaction_id cpu_time idle_time allocations duration identifier layout].each do |key|
       assert_includes @event.to_h, key
     end
+    if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
+      assert_includes @event.to_h, :locals
+    end
   end
 
   test 'calls #slice' do
@@ -76,5 +79,12 @@ class RenderTemplateTest < ActionDispatch::IntegrationTest
   test 'returns layout' do
     get '/users'
     assert_equal 'layouts/application', @event.layout
+  end
+
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
+    test 'returns locals' do
+      get '/users'
+      assert_instance_of Hash, @event.locals
+    end
   end
 end

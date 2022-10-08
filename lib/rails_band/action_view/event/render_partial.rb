@@ -22,6 +22,12 @@ module RailsBand
         def cache_hit
           @cache_hit ||= @event.payload.fetch(:cache_hit)
         end
+
+        if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
+          define_method(:locals) do
+            @locals ||= @event.payload[:locals]
+          end
+        end
       end
     end
   end

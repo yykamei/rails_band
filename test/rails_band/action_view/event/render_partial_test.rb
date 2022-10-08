@@ -57,6 +57,9 @@ class RenderPartialTest < ActionDispatch::IntegrationTest
        cache_hit].each do |key|
       assert_includes @event.to_h, key
     end
+    if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
+      assert_includes @event.to_h, :locals
+    end
   end
 
   test 'calls #slice' do
@@ -82,5 +85,12 @@ class RenderPartialTest < ActionDispatch::IntegrationTest
   test 'returns cache_hit' do
     get "/users/#{@user.id}"
     assert_equal :miss, @event.cache_hit
+  end
+
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
+    test 'returns locals' do
+      get "/users/#{@user.id}"
+      assert_instance_of Hash, @event.locals
+    end
   end
 end
