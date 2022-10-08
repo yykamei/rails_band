@@ -18,6 +18,12 @@ module RailsBand
 
           @layout = @event.payload[:layout]&.then { |layout| from_views(layout) }
         end
+
+        if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
+          define_method(:locals) do
+            @locals ||= @event.payload[:locals]
+          end
+        end
       end
     end
   end
