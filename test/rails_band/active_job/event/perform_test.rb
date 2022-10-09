@@ -78,10 +78,15 @@ class PerformTest < ActionDispatch::IntegrationTest
     assert_equal [{ name: 'JJ', message: 'Hi' }], @event.job.arguments
   end
 
-  if Gem::Version.new(Rails.version) > Gem::Version.new('7.0')
+  if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
     test 'returns aborted' do
       YayJob.perform_now(name: 'JJ', message: 'Hi', aborted: true)
       assert @event.aborted
+    end
+
+    test 'returns db_runtime' do
+      YayJob.perform_now(name: 'JJ', message: 'Hi')
+      assert_instance_of Float, @event.db_runtime
     end
   end
 end
