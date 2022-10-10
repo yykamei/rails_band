@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Add `:db_runtime` to `perform.active_job` [\#108](https://github.com/yykamei/rails_band/pull/108) ([yykamei](https://github.com/yykamei))
 - Add `:locals` to render\_partial and render\_template [\#106](https://github.com/yykamei/rails_band/pull/106) ([yykamei](https://github.com/yykamei))
 - Add `:request` to `redirect.action_dispatch` [\#104](https://github.com/yykamei/rails_band/pull/104) ([yykamei](https://github.com/yykamei))
 - Support redirect.action\_dispatch [\#101](https://github.com/yykamei/rails_band/pull/101) ([yykamei](https://github.com/yykamei))
