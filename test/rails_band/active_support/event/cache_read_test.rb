@@ -13,41 +13,49 @@ class CacheReadTest < ActionDispatch::IntegrationTest
 
   test 'returns name' do
     get "/users/#{@user.id}/cache"
+
     assert_equal 'cache_read.active_support', @event.name
   end
 
   test 'returns time' do
     get "/users/#{@user.id}/cache"
+
     assert_instance_of Float, @event.time
   end
 
   test 'returns end' do
     get "/users/#{@user.id}/cache"
+
     assert_instance_of Float, @event.end
   end
 
   test 'returns transaction_id' do
     get "/users/#{@user.id}/cache"
+
     assert_instance_of String, @event.transaction_id
   end
 
   test 'returns cpu_time' do
     get "/users/#{@user.id}/cache"
+
     assert_instance_of Float, @event.cpu_time
   end
 
   test 'returns idle_time' do
     get "/users/#{@user.id}/cache"
+
     assert_instance_of Float, @event.idle_time
   end
 
   test 'returns allocations' do
     get "/users/#{@user.id}/cache"
+
     assert_instance_of Integer, @event.allocations
   end
 
   test 'returns duration' do
     get "/users/#{@user.id}/cache"
+
     assert_instance_of Float, @event.duration
   end
 
@@ -60,22 +68,26 @@ class CacheReadTest < ActionDispatch::IntegrationTest
 
   test 'calls #slice' do
     get "/users/#{@user.id}/cache"
+
     assert_equal({ name: 'cache_read.active_support' }, @event.slice(:name))
   end
 
   test 'returns an instance of CacheRead' do
     get "/users/#{@user.id}/cache"
+
     assert_instance_of RailsBand::ActiveSupport::Event::CacheRead, @event
   end
 
   test 'returns key' do
     get "/users/#{@user.id}/cache"
+
     assert_equal @user.id, @event.key
   end
 
   if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
     test 'returns store' do
       get "/users/#{@user.id}/cache"
+
       assert_equal 'ActiveSupport::Cache::NullStore', @event.store
     end
   else
@@ -89,11 +101,13 @@ class CacheReadTest < ActionDispatch::IntegrationTest
 
   test 'returns hit' do
     get "/users/#{@user.id}/cache"
+
     assert_equal false, @event.hit
   end
 
   test 'returns super_operation' do
     get "/users/#{@user.id}/cache"
+
     assert_equal :fetch, @event.super_operation
   end
 end

@@ -13,6 +13,7 @@ class ActionDispatchLogSubscriberTest < ActionDispatch::IntegrationTest
       'process_middleware.action_dispatch': ->(_event) { @mock.recv }
     }
     get '/users'
+
     assert_mock @mock
   end
 
@@ -21,6 +22,7 @@ class ActionDispatchLogSubscriberTest < ActionDispatch::IntegrationTest
       action_dispatch: ->(event) { @mock.recv if event.name == 'process_middleware.action_dispatch' }
     }
     get '/users'
+
     assert_mock @mock
   end
 
@@ -29,6 +31,7 @@ class ActionDispatchLogSubscriberTest < ActionDispatch::IntegrationTest
       default: ->(event) { @mock.recv if event.name == 'process_middleware.action_dispatch' }
     }
     get '/users'
+
     assert_mock @mock
   end
 

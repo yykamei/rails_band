@@ -13,41 +13,49 @@ class RenderPartialTest < ActionDispatch::IntegrationTest
 
   test 'returns name' do
     get "/users/#{@user.id}"
+
     assert_equal 'render_partial.action_view', @event.name
   end
 
   test 'returns time' do
     get "/users/#{@user.id}"
+
     assert_instance_of Float, @event.time
   end
 
   test 'returns end' do
     get "/users/#{@user.id}"
+
     assert_instance_of Float, @event.end
   end
 
   test 'returns transaction_id' do
     get "/users/#{@user.id}"
+
     assert_instance_of String, @event.transaction_id
   end
 
   test 'returns cpu_time' do
     get "/users/#{@user.id}"
+
     assert_instance_of Float, @event.cpu_time
   end
 
   test 'returns idle_time' do
     get "/users/#{@user.id}"
+
     assert_instance_of Float, @event.idle_time
   end
 
   test 'returns allocations' do
     get "/users/#{@user.id}"
+
     assert_instance_of Integer, @event.allocations
   end
 
   test 'returns duration' do
     get "/users/#{@user.id}"
+
     assert_instance_of Float, @event.duration
   end
 
@@ -64,32 +72,38 @@ class RenderPartialTest < ActionDispatch::IntegrationTest
 
   test 'calls #slice' do
     get "/users/#{@user.id}"
+
     assert_equal({ name: 'render_partial.action_view' }, @event.slice(:name))
   end
 
   test 'returns an instance of RenderPartial' do
     get "/users/#{@user.id}"
+
     assert_instance_of RailsBand::ActionView::Event::RenderPartial, @event
   end
 
   test 'returns identifier' do
     get "/users/#{@user.id}"
+
     assert_equal 'users/_user.html.erb', @event.identifier
   end
 
   test 'returns layout' do
     get "/users/#{@user.id}"
+
     assert_nil @event.layout
   end
 
   test 'returns cache_hit' do
     get "/users/#{@user.id}"
+
     assert_equal :miss, @event.cache_hit
   end
 
   if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
     test 'returns locals' do
       get "/users/#{@user.id}"
+
       assert_instance_of Hash, @event.locals
     end
   end

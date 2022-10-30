@@ -13,6 +13,7 @@ class ActionControllerLogSubscriberTest < ActionDispatch::IntegrationTest
       'process_action.action_controller': ->(_event) { @mock.recv }
     }
     get '/users'
+
     assert_mock @mock
   end
 
@@ -21,6 +22,7 @@ class ActionControllerLogSubscriberTest < ActionDispatch::IntegrationTest
       action_controller: ->(event) { @mock.recv if event.name == 'start_processing.action_controller' }
     }
     get '/users'
+
     assert_mock @mock
   end
 
@@ -29,6 +31,7 @@ class ActionControllerLogSubscriberTest < ActionDispatch::IntegrationTest
       default: ->(event) { @mock.recv if event.name == 'start_processing.action_controller' }
     }
     get '/users'
+
     assert_mock @mock
   end
 

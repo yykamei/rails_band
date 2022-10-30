@@ -14,6 +14,7 @@ class ActionMailerLogSubscriberTest < ActionDispatch::IntegrationTest
       'deliver.action_mailer': ->(_event) { @mock.recv }
     }
     get "/users/#{@user.id}/welcome_email"
+
     assert_mock @mock
   end
 
@@ -22,6 +23,7 @@ class ActionMailerLogSubscriberTest < ActionDispatch::IntegrationTest
       action_mailer: ->(event) { @mock.recv if event.name == 'deliver.action_mailer' }
     }
     get "/users/#{@user.id}/welcome_email"
+
     assert_mock @mock
   end
 
@@ -30,6 +32,7 @@ class ActionMailerLogSubscriberTest < ActionDispatch::IntegrationTest
       default: ->(event) { @mock.recv if event.name == 'deliver.action_mailer' }
     }
     get "/users/#{@user.id}/welcome_email"
+
     assert_mock @mock
   end
 

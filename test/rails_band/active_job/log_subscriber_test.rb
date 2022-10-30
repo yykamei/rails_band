@@ -13,6 +13,7 @@ class ActiveJobLogSubscriberTest < ActionDispatch::IntegrationTest
       'enqueue_at.active_job': ->(_event) { @mock.recv }
     }
     get '/yay'
+
     assert_mock @mock
   end
 
@@ -21,6 +22,7 @@ class ActiveJobLogSubscriberTest < ActionDispatch::IntegrationTest
       active_job: ->(event) { @mock.recv if event.name == 'enqueue_at.active_job' }
     }
     get '/yay'
+
     assert_mock @mock
   end
 
@@ -29,6 +31,7 @@ class ActiveJobLogSubscriberTest < ActionDispatch::IntegrationTest
       default: ->(event) { @mock.recv if event.name == 'enqueue_at.active_job' }
     }
     get '/yay'
+
     assert_mock @mock
   end
 

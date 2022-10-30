@@ -12,6 +12,7 @@ class DeprecationSubscriberTest < ActionDispatch::IntegrationTest
       'deprecation.rails': ->(event) { @event = event }
     }
     get '/users/1/deprecation'
+
     assert_match(/DEPRECATION WARNING: deprecated!!!/, @event.message)
     assert_equal 'Rails', @event.gem_name
     assert_instance_of String, @event.deprecation_horizon
@@ -25,6 +26,7 @@ class DeprecationSubscriberTest < ActionDispatch::IntegrationTest
       deprecation: ->(event) { @event = event }
     }
     get '/users/1/deprecation'
+
     assert_match(/DEPRECATION WARNING: deprecated!!!/, @event.message)
     assert_equal 'Rails', @event.gem_name
     assert_instance_of String, @event.deprecation_horizon
@@ -38,6 +40,7 @@ class DeprecationSubscriberTest < ActionDispatch::IntegrationTest
       default: ->(event) { @event = event }
     }
     get '/users/1/deprecation'
+
     assert_match(/DEPRECATION WARNING: deprecated!!!/, @event.message)
     assert_equal 'Rails', @event.gem_name
     assert_instance_of String, @event.deprecation_horizon
@@ -51,6 +54,7 @@ class DeprecationSubscriberTest < ActionDispatch::IntegrationTest
       'unknown.rails': ->(event) { @event = event }
     }
     get '/users/1/deprecation'
+
     assert_nil @event
   end
 end
