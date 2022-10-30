@@ -12,41 +12,49 @@ class EnqueueRetryTest < ActionDispatch::IntegrationTest
 
   test 'returns name' do
     FlakyJob.perform_now
+
     assert_equal 'enqueue_retry.active_job', @event.name
   end
 
   test 'returns time' do
     FlakyJob.perform_now
+
     assert_instance_of Float, @event.time
   end
 
   test 'returns end' do
     FlakyJob.perform_now
+
     assert_instance_of Float, @event.end
   end
 
   test 'returns transaction_id' do
     FlakyJob.perform_now
+
     assert_instance_of String, @event.transaction_id
   end
 
   test 'returns cpu_time' do
     FlakyJob.perform_now
+
     assert_instance_of Float, @event.cpu_time
   end
 
   test 'returns idle_time' do
     FlakyJob.perform_now
+
     assert_instance_of Float, @event.idle_time
   end
 
   test 'returns allocations' do
     FlakyJob.perform_now
+
     assert_instance_of Integer, @event.allocations
   end
 
   test 'returns duration' do
     FlakyJob.perform_now
+
     assert_instance_of Float, @event.duration
   end
 
@@ -60,32 +68,38 @@ class EnqueueRetryTest < ActionDispatch::IntegrationTest
 
   test 'calls #slice' do
     FlakyJob.perform_now
+
     assert_equal({ name: 'enqueue_retry.active_job' }, @event.slice(:name))
   end
 
   test 'returns an instance of EnqueueRetry' do
     FlakyJob.perform_now
+
     assert_instance_of RailsBand::ActiveJob::Event::EnqueueRetry, @event
   end
 
   test 'returns adapter' do
     FlakyJob.perform_now
+
     assert_instance_of ::ActiveJob::QueueAdapters::TestAdapter, @event.adapter
   end
 
   test 'returns job' do
     FlakyJob.perform_now
+
     assert_instance_of FlakyJob, @event.job
     assert_equal [], @event.job.arguments
   end
 
   test 'returns wait' do
     FlakyJob.perform_now
+
     assert_kind_of Numeric, @event.wait
   end
 
   test 'returns error' do
     FlakyJob.perform_now
+
     assert_instance_of FlakyJob::Error, @event.error
   end
 end

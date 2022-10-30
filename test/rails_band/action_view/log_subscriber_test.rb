@@ -13,6 +13,7 @@ class ActionViewLogSubscriberTest < ActionDispatch::IntegrationTest
       'render_template.action_view': ->(_event) { @mock.recv }
     }
     get '/users'
+
     assert_mock @mock
   end
 
@@ -21,6 +22,7 @@ class ActionViewLogSubscriberTest < ActionDispatch::IntegrationTest
       action_view: ->(event) { @mock.recv if event.name == 'render_template.action_view' }
     }
     get '/users'
+
     assert_mock @mock
   end
 
@@ -29,6 +31,7 @@ class ActionViewLogSubscriberTest < ActionDispatch::IntegrationTest
       default: ->(event) { @mock.recv if event.name == 'render_template.action_view' }
     }
     get '/users'
+
     assert_mock @mock
   end
 

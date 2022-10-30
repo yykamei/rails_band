@@ -12,41 +12,49 @@ class ServiceDownloadChunkTest < ActionDispatch::IntegrationTest
 
   test 'returns name' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_equal 'service_download_chunk.active_storage', @event.name
   end
 
   test 'returns time' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Float, @event.time
   end
 
   test 'returns end' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Float, @event.end
   end
 
   test 'returns transaction_id' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of String, @event.transaction_id
   end
 
   test 'returns cpu_time' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Float, @event.cpu_time
   end
 
   test 'returns idle_time' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Float, @event.idle_time
   end
 
   test 'returns allocations' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Integer, @event.allocations
   end
 
   test 'returns duration' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Float, @event.duration
   end
 
@@ -59,26 +67,31 @@ class ServiceDownloadChunkTest < ActionDispatch::IntegrationTest
 
   test 'calls #slice' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_equal({ name: 'service_download_chunk.active_storage' }, @event.slice(:name))
   end
 
   test 'returns an instance of ServiceUpload' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of RailsBand::ActiveStorage::Event::ServiceDownloadChunk, @event
   end
 
   test 'returns the key' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_respond_to @event, :key
   end
 
   test 'returns the service' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_equal 'Disk', @event.service
   end
 
   test 'returns the range' do
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_equal 0...40, @event.range
   end
 end

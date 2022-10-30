@@ -12,41 +12,49 @@ class TransformTest < ActionDispatch::IntegrationTest
 
   test 'returns name' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_equal 'transform.active_storage', @event.name
   end
 
   test 'returns time' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Float, @event.time
   end
 
   test 'returns end' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Float, @event.end
   end
 
   test 'returns transaction_id' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of String, @event.transaction_id
   end
 
   test 'returns cpu_time' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Float, @event.cpu_time
   end
 
   test 'returns idle_time' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Float, @event.idle_time
   end
 
   test 'returns allocations' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Integer, @event.allocations
   end
 
   test 'returns duration' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of Float, @event.duration
   end
 
@@ -59,11 +67,13 @@ class TransformTest < ActionDispatch::IntegrationTest
 
   test 'calls #slice' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_equal({ name: 'transform.active_storage' }, @event.slice(:name))
   end
 
   test 'returns an instance of ServiceUpload' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     assert_instance_of RailsBand::ActiveStorage::Event::Transform, @event
   end
 end

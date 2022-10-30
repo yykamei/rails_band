@@ -14,6 +14,7 @@ class ActiveSupportLogSubscriberTest < ActionDispatch::IntegrationTest
       'cache_read.active_support': ->(_event) { @mock.recv }
     }
     get "/users/#{@user.id}/cache"
+
     assert_mock @mock
   end
 
@@ -22,6 +23,7 @@ class ActiveSupportLogSubscriberTest < ActionDispatch::IntegrationTest
       active_support: ->(event) { @mock.recv if event.name == 'cache_read.active_support' }
     }
     get "/users/#{@user.id}/cache"
+
     assert_mock @mock
   end
 
@@ -30,6 +32,7 @@ class ActiveSupportLogSubscriberTest < ActionDispatch::IntegrationTest
       default: ->(event) { @mock.recv if event.name == 'cache_read.active_support' }
     }
     get "/users/#{@user.id}/cache"
+
     assert_mock @mock
   end
 

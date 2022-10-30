@@ -13,6 +13,7 @@ class ActiveRecordLogSubscriberTest < ActionDispatch::IntegrationTest
       'sql.active_record': ->(_event) { @mock.recv }
     }
     get '/users'
+
     assert_mock @mock
   end
 
@@ -21,6 +22,7 @@ class ActiveRecordLogSubscriberTest < ActionDispatch::IntegrationTest
       active_record: ->(event) { @mock.recv if event.name == 'sql.active_record' }
     }
     get '/users'
+
     assert_mock @mock
   end
 
@@ -29,6 +31,7 @@ class ActiveRecordLogSubscriberTest < ActionDispatch::IntegrationTest
       default: ->(event) { @mock.recv if event.name == 'sql.active_record' }
     }
     get '/users'
+
     assert_mock @mock
   end
 
