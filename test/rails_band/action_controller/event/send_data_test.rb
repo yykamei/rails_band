@@ -61,6 +61,7 @@ class SendDataTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get '/users/123/data'
+
     %i[name time end transaction_id cpu_time idle_time allocations duration
        filename type disposition status].each do |key|
       assert_includes @event.to_h, key

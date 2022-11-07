@@ -61,6 +61,7 @@ class SendFileTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get '/users/123/file'
+
     %i[name time end transaction_id cpu_time idle_time allocations duration
        path filename type disposition status].each do |key|
       assert_includes @event.to_h, key

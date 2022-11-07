@@ -61,6 +61,7 @@ class RedirectToTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get '/users/123/redirect'
+
     %i[name time end transaction_id cpu_time idle_time allocations duration
        status location].each do |key|
       assert_includes @event.to_h, key

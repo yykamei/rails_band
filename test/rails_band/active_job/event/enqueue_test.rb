@@ -60,6 +60,7 @@ class EnqueueTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get '/yay/123'
+
     %i[name time end transaction_id cpu_time idle_time allocations duration adapter job].each do |key|
       assert_includes @event.to_h, key
     end

@@ -61,6 +61,7 @@ class ProcessTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get "/users/#{@user.id}/welcome_email"
+
     %i[name time end transaction_id cpu_time idle_time allocations duration mailer action args].each do |key|
       assert_includes @event.to_h, key
     end

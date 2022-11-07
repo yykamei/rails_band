@@ -61,6 +61,7 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
 
     test 'calls #to_h' do
       get '/old_users'
+
       %i[name time end transaction_id cpu_time idle_time allocations duration status location request].each do |key|
         assert_includes @event.to_h, key
       end

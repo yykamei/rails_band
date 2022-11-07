@@ -61,6 +61,7 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('7.0')
 
     test 'calls #to_h' do
       post '/teams/analyze', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
       %i[name time end transaction_id cpu_time idle_time allocations duration analyzer].each do |key|
         assert_includes @event.to_h, key
       end

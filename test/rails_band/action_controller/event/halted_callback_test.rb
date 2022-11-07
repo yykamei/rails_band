@@ -60,6 +60,7 @@ class HaltedCallbackTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get '/users/123/callback'
+
     %i[name time end transaction_id cpu_time idle_time allocations duration filter].each do |key|
       assert_includes @event.to_h, key
     end

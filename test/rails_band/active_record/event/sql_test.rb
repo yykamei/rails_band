@@ -61,6 +61,7 @@ class SqlTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get "/users/#{@user.id}"
+
     %i[name time end transaction_id cpu_time idle_time allocations duration sql sql_name binds
        type_casted_binds connection statement_name async cached].each do |key|
       assert_includes @event.to_h, key

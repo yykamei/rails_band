@@ -60,6 +60,7 @@ class EnqueueRetryTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     FlakyJob.perform_now
+
     %i[name time end transaction_id cpu_time idle_time allocations duration adapter job
        wait error].each do |key|
       assert_includes @event.to_h, key

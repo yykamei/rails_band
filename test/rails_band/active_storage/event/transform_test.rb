@@ -60,6 +60,7 @@ class TransformTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     post '/teams/transform', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
+
     %i[name time end transaction_id cpu_time idle_time allocations duration].each do |key|
       assert_includes @event.to_h, key
     end

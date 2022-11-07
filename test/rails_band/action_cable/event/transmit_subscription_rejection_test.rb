@@ -62,6 +62,7 @@ class TransmitSubscriptionRejectionTest < ::ActionCable::Channel::TestCase
 
   test 'calls #to_h' do
     subscribe number: '-3'
+
     %i[name time end transaction_id cpu_time idle_time allocations duration channel_class].each do |key|
       assert_includes @event.to_h, key
     end

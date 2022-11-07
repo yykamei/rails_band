@@ -60,6 +60,7 @@ class StartProcessingTest < ActionDispatch::IntegrationTest
 
   test 'calls #to_h' do
     get '/users'
+
     %i[name time end transaction_id cpu_time idle_time allocations duration controller action params headers
        format method path].each do |key|
       assert_includes @event.to_h, key
