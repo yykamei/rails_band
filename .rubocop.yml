@@ -40,4 +40,8 @@ Metrics/BlockLength:
 Style/IfUnlessModifier:
   Enabled: false
 
+# `Module.nesting` is empty in the current code, but we're not sure it will keep being that.
+Style/RedundantConstantBase:
+  Enabled: false
+
 # If you feel annoyed by the current configuration, let's tweak the configuration!
