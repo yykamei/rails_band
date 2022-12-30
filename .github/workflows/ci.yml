@@ -33,6 +33,8 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
+      - run: gem update --system
+
       - run: bundle exec rake test
 
   lint:
