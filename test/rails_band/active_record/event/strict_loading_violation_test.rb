@@ -11,8 +11,8 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
       }
       @user = User.create!(name: 'foo', email: 'foo@example.com')
       ActiveSupport::Deprecation.silence do
-        @old_ar_config = ActiveRecord::Base.action_on_strict_loading_violation
-        ActiveRecord::Base.action_on_strict_loading_violation = :log
+        @old_ar_config = ActiveRecord.action_on_strict_loading_violation
+        ActiveRecord.action_on_strict_loading_violation = :log
       end
 
       Note.create!(user: @user, title: 'f')
@@ -21,7 +21,7 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
 
     teardown do
       ActiveSupport::Deprecation.silence do
-        ActiveRecord::Base.action_on_strict_loading_violation = @old_ar_config
+        ActiveRecord.action_on_strict_loading_violation = @old_ar_config
       end
     end
 
