@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/yykamei/rails_band/tree/HEAD)
+
+[Full Changelog](https://github.com/yykamei/rails_band/compare/v0.8.0...HEAD)
+
+**Merged pull requests:**
+
+- Fix the access to `.action_on_strict_loading_violation` [\#115](https://github.com/yykamei/rails_band/pull/115) ([yykamei](https://github.com/yykamei))
+
 ## [v0.8.0](https://github.com/yykamei/rails_band/tree/v0.8.0) (2023-01-30)
 
 [Full Changelog](https://github.com/yykamei/rails_band/compare/v0.7.0...v0.8.0)
