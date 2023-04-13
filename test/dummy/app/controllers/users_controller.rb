@@ -94,8 +94,10 @@ class UsersController < ApplicationController
   end
 
   def deprecation
-    ActiveSupport::Deprecation.behavior = :notify
-    ActiveSupport::Deprecation.warn('deprecated!!!')
+    ActiveSupport::Deprecation.new('2.0').tap do |deprecator|
+      deprecator.behavior = :notify
+      deprecator.warn('deprecated!!!')
+    end
     redirect_to users_path
   end
 
