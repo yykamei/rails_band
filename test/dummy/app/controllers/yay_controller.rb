@@ -10,6 +10,10 @@ class YayController < ApplicationController
   def show
     aborted = ActiveModel::Type::Boolean.new.cast(params[:aborted])
     YayJob.perform_later(name: 'E!', message: 'This is E.', **{ aborted: aborted }.compact)
+
+    if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
+      ActiveJob.perform_all_later(YayJob.new(name: 'F!', message: 'This is F.'))
+    end
     head :no_content
   end
 end
