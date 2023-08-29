@@ -125,6 +125,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`perform.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#perform-active-job)             | ✅        |
 | [`retry_stopped.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#retry-stopped-active-job) | ✅        |
 | [`discard.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#discard-active-job)             | ✅        |
+| [`enqueue_all.active_job`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#enqueue-all-active-job)                       |           |
 
 ### Action Cable
 
