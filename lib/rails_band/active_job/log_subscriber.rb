@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_band/active_job/event/enqueue_at'
+require 'rails_band/active_job/event/enqueue_all'
 require 'rails_band/active_job/event/enqueue'
 require 'rails_band/active_job/event/enqueue_retry'
 require 'rails_band/active_job/event/perform_start'
@@ -40,6 +41,10 @@ module RailsBand
 
       def discard(event)
         consumer_of(__method__)&.call(Event::Discard.new(event))
+      end
+
+      def enqueue_all(event)
+        consumer_of(__method__)&.call(Event::EnqueueAll.new(event))
       end
 
       private
