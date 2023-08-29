@@ -90,7 +90,7 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1.0.alpha')
 
       assert_instance_of Array, @event.jobs
       assert_instance_of YayJob, @event.jobs.first
-      assert_equal [{ name: 'F!', message: 'This is F.' }], @event.jobs.map(&:arguments)
+      assert_equal [[{ name: 'F!', message: 'This is F.' }]], @event.jobs.map(&:arguments)
     end
   end
 end
