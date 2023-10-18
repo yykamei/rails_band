@@ -19,7 +19,7 @@ jobs:
           - ruby: '2.6'
             rails: '7.0'
           - ruby: '2.6'
-            rails: '7.0'
+            rails: '7.1'
           - ruby: '2.6'
             rails: 'edge'
     env:
