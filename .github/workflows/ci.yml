@@ -19,6 +19,8 @@ jobs:
           - ruby: '2.6'
             rails: '7.0'
           - ruby: '2.6'
+            rails: '7.0'
+          - ruby: '2.6'
             rails: 'edge'
     env:
       BUNDLE_GEMFILE: gemfiles/rails_${{ matrix.rails }}.gemfile
