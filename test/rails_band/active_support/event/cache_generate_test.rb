@@ -82,7 +82,7 @@ class CacheGenerateTest < ActionDispatch::IntegrationTest
   test 'returns key' do
     get "/users/#{@user.id}/cache"
 
-    assert_equal @user.id, @event.key
+    assert_equal "key_#{@user.id}", @event.key
   end
 
   if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')

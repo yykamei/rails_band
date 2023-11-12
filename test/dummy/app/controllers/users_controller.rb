@@ -70,7 +70,7 @@ class UsersController < ApplicationController
 
   def cache
     user = User.find(params.require(:user_id))
-    result = Rails.cache.fetch(user.id, expires_in: 1.minutes) do
+    result = Rails.cache.fetch("key_#{user.id}", expires_in: 1.minutes) do
       user.slow_method
     end
     logger.info(result)
