@@ -48,10 +48,6 @@ jobs:
       - run: gem push ./*.gem
         if: github.event.inputs.apply == 'true'
 
-      - name: Wait for release to propagate
-        run: gem exec rubygems-await ./*.gem
-        if: github.event.inputs.apply == 'true'
-
       - uses: yykamei/actions-release-actions@main
         with:
           tag: v${{ github.event.inputs.version }}
