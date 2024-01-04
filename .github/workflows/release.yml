@@ -11,10 +11,15 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT_FOR_RELEASE }}
+
+      - uses: rubygems/configure-rubygems-credentials@v1.0.0
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -41,8 +46,10 @@ jobs:
       - run: gem build rails_band.gemspec
 
       - run: gem push ./*.gem
-        env:
-          GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
+        if: github.event.inputs.apply == 'true'
+
+      - name: Wait for release to propagate
+        run: gem exec rubygems-await pkg/*.gem
         if: github.event.inputs.apply == 'true'
 
       - uses: yykamei/actions-release-actions@main
