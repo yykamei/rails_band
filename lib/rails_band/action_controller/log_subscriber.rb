@@ -7,6 +7,7 @@ require 'rails_band/action_controller/event/exist_fragment'
 require 'rails_band/action_controller/event/start_processing'
 require 'rails_band/action_controller/event/process_action'
 require 'rails_band/action_controller/event/send_file'
+require 'rails_band/action_controller/event/send_stream'
 require 'rails_band/action_controller/event/send_data'
 require 'rails_band/action_controller/event/redirect_to'
 require 'rails_band/action_controller/event/halted_callback'
@@ -48,6 +49,10 @@ module RailsBand
 
       def send_file(event)
         consumer_of(__method__)&.call(Event::SendFile.new(event))
+      end
+
+      def send_stream(event)
+        consumer_of(__method__)&.call(Event::SendStream.new(event))
       end
 
       def send_data(event)
