@@ -63,7 +63,7 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('7.2.0.alpha')
       get '/special_stream'
 
       %i[name time end transaction_id cpu_time idle_time allocations duration
-       filename type disposition].each do |key|
+         filename type disposition].each do |key|
         assert_includes @event.to_h, key
       end
     end

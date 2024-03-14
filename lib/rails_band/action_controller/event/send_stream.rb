@@ -5,7 +5,6 @@ module RailsBand
     module Event
       # A wrapper for the event that is passed to `send_stream.action_controller`.
       class SendStream < BaseEvent
-
         def filename
           return @filename if defined? @filename
 
