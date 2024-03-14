@@ -76,6 +76,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | --------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
 | [`process_middleware.action_dispatch`](https://guides.rubyonrails.org/active_support_instrumentation.html#process-middleware-action-dispatch) | ✅        |
 | [`redirect.action_dispatch`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#redirect-action-dispatch)                 | ✅        |
+| [`request.action_dispatch`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#request-action-dispatch)                   |           |
 
 ### Action View
 
@@ -101,19 +102,30 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`deliver.action_mailer`](https://guides.rubyonrails.org/active_support_instrumentation.html#deliver-action-mailer) | ✅        |
 | [`process.action_mailer`](https://guides.rubyonrails.org/active_support_instrumentation.html#process-action-mailer) | ✅        |
 
-### Active Support
+### Active Support — Caching
 
-| Event name                                                                                                                                  | Supported |
-| ------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| [`cache_read.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-read-active-support)                 | ✅        |
-| `cache_read_multi.active_support` (Not yet documented)                                                                                      | ✅        |
-| [`cache_generate.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-generate-active-support)         | ✅        |
-| [`cache_fetch_hit.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-fetch-hit-active-support)       | ✅        |
-| [`cache_write.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-write-active-support)               | ✅        |
-| `cache_write_multi.active_support` (Not yet documented)                                                                                     | ✅        |
-| [`cache_delete.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-delete-active-support)             | ✅        |
-| `cache_delete_multi.active_support` (Not yet documented, supported since Rails 6.1)                                                         | ✅        |
-| [`cache_exist?.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-exist-questionmark-active-support) | ✅        |
+| Event name                                                                                                                                          | Supported |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| [`cache_read.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-read-active-support)                         | ✅        |
+| [`cache_read_multi.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-read-multi-active-support)         | ✅        |
+| [`cache_generate.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-generate-active-support)                 | ✅        |
+| [`cache_fetch_hit.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-fetch-hit-active-support)               | ✅        |
+| [`cache_write.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-write-active-support)                       | ✅        |
+| [`cache_write_multi.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-write-multi-active-support)       | ✅        |
+| [`cache_increment.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-increment-active-support)           |           |
+| [`cache_decrement.active_support `](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-decrement-active-support)          |           |
+| [`cache_delete.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-delete-active-support)                     | ✅        |
+| [`cache_delete_multi.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-delete-multi-active-support)     | ✅        |
+| [`cache_delete_matched.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-delete-matched-active-support) |           |
+| [`cache_cleanup.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-cleanup-active-support)               |           |
+| [`cache_prune.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-prune-active-support)                   |           |
+| [`cache_exist?.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-exist-questionmark-active-support)         | ✅        |
+
+### Active Support — Messages
+
+| Event name                                                                                                                                                        | Supported |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| [`message_serializer_fallback.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#message-serializer-fallback-active-support) |           |
 
 ### Active Job
 
@@ -154,6 +166,12 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`preview.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#preview-active-storage)                                       | ✅        |
 | [`transform.active_storage`](https://guides.rubyonrails.org/active_support_instrumentation.html#transform-active-storage)                                   | ✅        |
 | [`analyze.active_storage`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#analyze-active-storage)                                   | ✅        |
+
+### Action Mailbox
+
+| Event name                                                                                                                | Supported |
+| ------------------------------------------------------------------------------------------------------------------------- | --------- |
+| [`process.action_mailbox`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#process-action-mailbox) |           |
 
 ### Railties
 
