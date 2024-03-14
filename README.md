@@ -64,6 +64,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`start_processing.action_controller`](https://guides.rubyonrails.org/active_support_instrumentation.html#start-processing-action-controller)             | ✅        |
 | [`process_action.action_controller`](https://guides.rubyonrails.org/active_support_instrumentation.html#process-action-action-controller)                 | ✅        |
 | [`send_file.action_controller`](https://guides.rubyonrails.org/active_support_instrumentation.html#send-file-action-controller)                           | ✅        |
+| [`send_stream.action_controller`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#send-stream-action-controller)                   | ✅        |
 | [`send_data.action_controller`](https://guides.rubyonrails.org/active_support_instrumentation.html#send-data-action-controller)                           | ✅        |
 | [`redirect_to.action_controller`](https://guides.rubyonrails.org/active_support_instrumentation.html#redirect-to-action-controller)                       | ✅        |
 | [`halted_callback.action_controller`](https://guides.rubyonrails.org/active_support_instrumentation.html#halted-callback-action-controller)               | ✅        |
