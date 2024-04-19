@@ -9,5 +9,5 @@ group :development do
   gem 'mini_magick'
   gem 'rubocop', require: false
   gem 'rubocop-minitest', require: false
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.4'
 end
