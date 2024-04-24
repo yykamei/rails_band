@@ -76,7 +76,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | --------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
 | [`process_middleware.action_dispatch`](https://guides.rubyonrails.org/active_support_instrumentation.html#process-middleware-action-dispatch) | ✅        |
 | [`redirect.action_dispatch`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#redirect-action-dispatch)                 | ✅        |
-| [`request.action_dispatch`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#request-action-dispatch)                   |           |
+| [`request.action_dispatch`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#request-action-dispatch)                   | ✅        |
 
 ### Action View
 
