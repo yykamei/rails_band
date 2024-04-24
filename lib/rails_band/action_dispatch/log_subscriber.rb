@@ -2,6 +2,7 @@
 
 require 'rails_band/action_dispatch/event/process_middleware'
 require 'rails_band/action_dispatch/event/redirect'
+require 'rails_band/action_dispatch/event/request'
 
 module RailsBand
   module ActionDispatch
@@ -15,6 +16,10 @@ module RailsBand
 
       def redirect(event)
         consumer_of(__method__)&.call(Event::Redirect.new(event))
+      end
+
+      def request(event)
+        consumer_of(__method__)&.call(Event::Request.new(event))
       end
 
       private
