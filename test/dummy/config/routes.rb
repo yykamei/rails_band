@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get :cache
     get :cache2
     get :cache3
+    get :cache4
     get :deprecation
   end
 
