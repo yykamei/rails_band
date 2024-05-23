@@ -94,6 +94,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | `strict_loading_violation.active_record` (Not yet documented. See the configuration of `action_on_strict_loading_violation`)    | ✅        |
 | [`sql.active_record`](https://guides.rubyonrails.org/active_support_instrumentation.html#sql-active-record)                     | ✅        |
 | [`instantiation.active_record`](https://guides.rubyonrails.org/active_support_instrumentation.html#instantiation-active-record) | ✅        |
+| [`transaction.active_record`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#transaction-active-record) |           |
 
 ### Action Mailer
 
