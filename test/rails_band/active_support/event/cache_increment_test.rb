@@ -87,7 +87,7 @@ class CacheIncrementTest < ActionDispatch::IntegrationTest
   test 'returns store' do
     get '/users/123/cache4'
 
-    assert_equal 'ActiveSupport::Cache::RedisCacheStore', @event.store
+    assert_equal 'RedisCacheStore', @event.store
   end
 
   test 'returns amount' do
