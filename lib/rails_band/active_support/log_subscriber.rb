@@ -7,6 +7,7 @@ require 'rails_band/active_support/event/cache_fetch_hit'
 require 'rails_band/active_support/event/cache_write'
 require 'rails_band/active_support/event/cache_write_multi'
 require 'rails_band/active_support/event/cache_increment'
+require 'rails_band/active_support/event/cache_decrement'
 require 'rails_band/active_support/event/cache_delete'
 require 'rails_band/active_support/event/cache_delete_multi'
 require 'rails_band/active_support/event/cache_exist'
@@ -43,6 +44,10 @@ module RailsBand
 
       def cache_increment(event)
         consumer_of(__method__)&.call(Event::CacheIncrement.new(event))
+      end
+
+      def cache_decrement(event)
+        consumer_of(__method__)&.call(Event::CacheDecrement.new(event))
       end
 
       def cache_delete(event)
