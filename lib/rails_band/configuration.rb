@@ -10,7 +10,7 @@ module RailsBand
           raise ArgumentError, "The value for `#{key.inspect}` must have #call: the passed one is `#{value.inspect}`"
         end
 
-        super(key, value)
+        super
       end
     end
 
