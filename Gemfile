@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'rails', github: 'rails/rails'
+
 group :development do
   gem 'image_processing', '~> 1.2'
   gem 'mini_magick'
