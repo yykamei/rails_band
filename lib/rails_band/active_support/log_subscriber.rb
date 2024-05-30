@@ -10,6 +10,7 @@ require 'rails_band/active_support/event/cache_increment'
 require 'rails_band/active_support/event/cache_decrement'
 require 'rails_band/active_support/event/cache_delete'
 require 'rails_band/active_support/event/cache_delete_multi'
+require 'rails_band/active_support/event/cache_delete_matched'
 require 'rails_band/active_support/event/cache_exist'
 
 module RailsBand
@@ -56,6 +57,10 @@ module RailsBand
 
       def cache_delete_multi(event)
         consumer_of(__method__)&.call(Event::CacheDeleteMulti.new(event))
+      end
+
+      def cache_delete_matched(event)
+        consumer_of(__method__)&.call(Event::CacheDeleteMatched.new(event))
       end
 
       def cache_exist?(event)

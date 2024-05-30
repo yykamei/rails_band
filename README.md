@@ -117,7 +117,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`cache_decrement.active_support `](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-decrement-active-support)          | ✅        |
 | [`cache_delete.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-delete-active-support)                     | ✅        |
 | [`cache_delete_multi.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-delete-multi-active-support)     | ✅        |
-| [`cache_delete_matched.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-delete-matched-active-support) |           |
+| [`cache_delete_matched.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-delete-matched-active-support) | ✅        |
 | [`cache_cleanup.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-cleanup-active-support)               |           |
 | [`cache_prune.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-prune-active-support)                   |           |
 | [`cache_exist?.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-exist-questionmark-active-support)         | ✅        |
