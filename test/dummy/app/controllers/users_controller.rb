@@ -104,6 +104,10 @@ class UsersController < ApplicationController
                                             { key: 'DEC1', store: 'RedisCacheStore', amount: 1 }) do
       # noop
     end
+    ActiveSupport::Notifications.instrument('cache_delete_matched.active_support',
+                                            { key: 'MyDeleteMatched', store: 'Store!' }) do
+      # noop
+    end
     redirect_to users_path
   end
 
