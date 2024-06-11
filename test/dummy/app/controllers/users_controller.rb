@@ -111,6 +111,10 @@ class UsersController < ApplicationController
                                             { store: 'Store!', size: 2 }) do
       # noop
     end
+    ActiveSupport::Notifications.instrument('cache_prune.active_support',
+                                            { store: 'Store!', key: 5000, from: 9001 }) do
+      # noop
+    end
     redirect_to users_path
   end
 

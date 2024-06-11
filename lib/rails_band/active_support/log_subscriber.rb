@@ -12,6 +12,7 @@ require 'rails_band/active_support/event/cache_delete'
 require 'rails_band/active_support/event/cache_delete_multi'
 require 'rails_band/active_support/event/cache_delete_matched'
 require 'rails_band/active_support/event/cache_cleanup'
+require 'rails_band/active_support/event/cache_prune'
 require 'rails_band/active_support/event/cache_exist'
 
 module RailsBand
@@ -66,6 +67,10 @@ module RailsBand
 
       def cache_cleanup(event)
         consumer_of(__method__)&.call(Event::CacheCleanup.new(event))
+      end
+
+      def cache_prune(event)
+        consumer_of(__method__)&.call(Event::CachePrune.new(event))
       end
 
       def cache_exist?(event)
