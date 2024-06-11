@@ -94,8 +94,7 @@ class UsersController < ApplicationController
   end
 
   def cache4
-    # HACK: cache_increment and cache_decrement events are emitted when using MemCacheStore or RedisCacheStore.
-    #       This code simulates the events.
+    # HACK: This code simulates the events that are specific to any cache store.
     ActiveSupport::Notifications.instrument('cache_increment.active_support',
                                             { key: 'INC1', store: 'RedisCacheStore', amount: 1 }) do
       # noop
@@ -106,6 +105,10 @@ class UsersController < ApplicationController
     end
     ActiveSupport::Notifications.instrument('cache_delete_matched.active_support',
                                             { key: 'MyDeleteMatched', store: 'Store!' }) do
+      # noop
+    end
+    ActiveSupport::Notifications.instrument('cache_cleanup.active_support',
+                                            { store: 'Store!', size: 2 }) do
       # noop
     end
     redirect_to users_path
