@@ -14,6 +14,7 @@ require 'rails_band/active_support/event/cache_delete_matched'
 require 'rails_band/active_support/event/cache_cleanup'
 require 'rails_band/active_support/event/cache_prune'
 require 'rails_band/active_support/event/cache_exist'
+require 'rails_band/active_support/event/message_serializer_fallback'
 
 module RailsBand
   module ActiveSupport
@@ -75,6 +76,10 @@ module RailsBand
 
       def cache_exist?(event)
         consumer_of(__method__)&.call(Event::CacheExist.new(event))
+      end
+
+      def message_serializer_fallback(event)
+        consumer_of(__method__)&.call(Event::MessageSerializerFallback.new(event))
       end
 
       private

@@ -126,6 +126,13 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def message_serializer_fallback
+    value = { 'foo' => 'bar' }
+    dumped = ActiveSupport::Messages::SerializerWithFallback[:json].dump(value)
+    ActiveSupport::Messages::SerializerWithFallback[:marshal].load(dumped)
+    redirect_to users_path
+  end
+
   private
 
   def halt!
