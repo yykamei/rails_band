@@ -63,7 +63,7 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1')
       get '/users/123/message_serializer_fallback'
 
       %i[name time end transaction_id cpu_time idle_time allocations duration serializer fallback serialized
-       deserialized].each do |key|
+         deserialized].each do |key|
         assert_includes @event.to_h, key
       end
     end
