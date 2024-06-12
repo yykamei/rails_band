@@ -126,7 +126,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 
 | Event name                                                                                                                                                        | Supported |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| [`message_serializer_fallback.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#message-serializer-fallback-active-support) |           |
+| [`message_serializer_fallback.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#message-serializer-fallback-active-support) | ✅        |
 
 ### Active Job
 
