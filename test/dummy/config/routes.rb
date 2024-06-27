@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get :cache4
     get :deprecation
     get :message_serializer_fallback
+    get :mailbox
   end
 
   resources :yay, only: %i[index show]

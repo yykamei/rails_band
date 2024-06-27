@@ -172,7 +172,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 
 | Event name                                                                                                                | Supported |
 | ------------------------------------------------------------------------------------------------------------------------- | --------- |
-| [`process.action_mailbox`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#process-action-mailbox) |           |
+| [`process.action_mailbox`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#process-action-mailbox) | ✅        |
 
 ### Railties
 

@@ -66,6 +66,11 @@ module RailsBand
           swap.call(::ActiveJob::LogSubscriber, RailsBand::ActiveJob::LogSubscriber, :active_job)
         end
       end
+
+      if defined?(::ActionMailbox)
+        RailsBand::ActionMailbox::LogSubscriber.consumers = consumers
+        RailsBand::ActionMailbox::LogSubscriber.attach_to :action_mailbox
+      end
     end
   end
 end
