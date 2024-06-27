@@ -133,6 +133,15 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def mailbox
+    ActiveSupport::Notifications.instrument('process.action_mailbox',
+                                            { mailbox: Object.new,
+                                              inbound_email: { id: 3, message_id: 'mid', status: 'processing' } }) do
+      # noop
+    end
+    redirect_to users_path
+  end
+
   private
 
   def halt!

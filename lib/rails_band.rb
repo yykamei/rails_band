@@ -53,4 +53,9 @@ module RailsBand
   module ActiveStorage
     autoload :LogSubscriber, 'rails_band/active_storage/log_subscriber'
   end
+
+  # RailsBand::ActionMailbox is responsible for subscribing notifications from ActionMailbox.
+  module ActionMailbox
+    autoload :LogSubscriber, 'rails_band/action_mailbox/log_subscriber'
+  end
 end
