@@ -81,7 +81,7 @@ class CacheWriteMultiTest < ActionDispatch::IntegrationTest
   test 'returns key' do
     get '/users/123/cache3'
 
-    assert_equal({ w1: 1, w2: 2 }, @event.key)
+    assert_equal({ w1: 1, w2: 2 }, @event.key.transform_keys(&:to_sym))
   end
 
   if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
