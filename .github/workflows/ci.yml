@@ -24,6 +24,8 @@ jobs:
             rails: 'edge'
           - ruby: '2.7'
             rails: '7.1'
+          - ruby: '3.0'
+            rails: '7.2'
           - ruby: '2.7'
             rails: 'edge'
           - ruby: '3.0'
