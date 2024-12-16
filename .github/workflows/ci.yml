@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: sudo apt-get update -y && sudo apt-get install -y --no-install-recommends libvips libmagickwand-dev
+      - run: sudo apt-get update -y && sudo apt-get install -y --no-install-recommends libvips imagemagick
 
       - uses: ruby/setup-ruby@v1
         with:
