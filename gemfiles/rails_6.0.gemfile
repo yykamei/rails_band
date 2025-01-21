@@ -3,7 +3,6 @@
 source 'https://rubygems.org'
 
 gem 'image_processing', '~> 1.2'
-gem 'logger'
 gem 'mini_magick'
 gem 'net-smtp', require: false if RUBY_VERSION >= '3.1'
 gem 'psych', '~> 3.0'
