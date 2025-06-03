@@ -89,12 +89,13 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 
 ### Active Record
 
-| Event name                                                                                                                      | Supported |
-| ------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| `strict_loading_violation.active_record` (Not yet documented. See the configuration of `action_on_strict_loading_violation`)    | ✅        |
-| [`sql.active_record`](https://guides.rubyonrails.org/active_support_instrumentation.html#sql-active-record)                     | ✅        |
-| [`instantiation.active_record`](https://guides.rubyonrails.org/active_support_instrumentation.html#instantiation-active-record) | ✅        |
-| [`transaction.active_record`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#transaction-active-record) |           |
+| Event name                                                                                                                                  | Supported |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `strict_loading_violation.active_record` (Not yet documented. See the configuration of `action_on_strict_loading_violation`)                | ✅        |
+| [`sql.active_record`](https://guides.rubyonrails.org/active_support_instrumentation.html#sql-active-record)                                 | ✅        |
+| [`instantiation.active_record`](https://guides.rubyonrails.org/active_support_instrumentation.html#instantiation-active-record)             | ✅        |
+| [`start_transaction.active_record`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#start-transaction-active-record) |           |
+| [`transaction.active_record`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#transaction-active-record)             |           |
 
 ### Action Mailer
 
@@ -176,9 +177,9 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 
 ### Railties
 
-| Event name                                                                                                                                | Supported |
-| ----------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| [`load_config_initializer.railties`](https://guides.rubyonrails.org/active_support_instrumentation.html#load-config-initializer-railties) |           |
+| Event name                                                                                                                                    | Supported |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| [`load_config_initializer.railties`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#load-config-initializer-railties) |           |
 
 ### Rails
 
