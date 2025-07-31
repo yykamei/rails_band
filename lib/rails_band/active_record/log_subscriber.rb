@@ -3,6 +3,7 @@
 require 'rails_band/active_record/event/sql'
 require 'rails_band/active_record/event/instantiation'
 require 'rails_band/active_record/event/strict_loading_violation'
+require 'rails_band/active_record/event/start_transaction'
 
 module RailsBand
   module ActiveRecord
@@ -20,6 +21,10 @@ module RailsBand
 
       def instantiation(event)
         consumer_of(__method__)&.call(Event::Instantiation.new(event))
+      end
+
+      def start_transaction(event)
+        consumer_of(__method__)&.call(Event::StartTransaction.new(event))
       end
 
       private
