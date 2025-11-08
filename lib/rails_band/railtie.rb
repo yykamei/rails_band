@@ -13,7 +13,7 @@ module RailsBand
       #       only when `ActionDispatch::MiddlewareStack#build` detects `process_middleware.action_dispatch`
       #       is listened to. So, `attach_to` must be called before Rack middlewares will be loaded.
       if defined?(::ActionDispatch::LogSubscriber)
-        unsubscribe_default_log_subscriber(::ActionDispatch::LogSubscriber)
+        RailsBand::Railtie.unsubscribe_default_log_subscriber(::ActionDispatch::LogSubscriber)
       end
       RailsBand::ActionDispatch::LogSubscriber.attach_to :action_dispatch
     end
@@ -22,7 +22,7 @@ module RailsBand
       consumers = app.config.rails_band.consumers
 
       swap = lambda { |old_class, new_class, namespace|
-        unsubscribe_default_log_subscriber(old_class)
+        RailsBand::Railtie.unsubscribe_default_log_subscriber(old_class)
         new_class.consumers = consumers
         new_class.attach_to namespace
       }
@@ -74,8 +74,6 @@ module RailsBand
         RailsBand::ActionMailbox::LogSubscriber.attach_to :action_mailbox
       end
     end
-
-    private
 
     # Unsubscribe default log subscribers to prevent duplicate logging.
     # For Rails 8.1+, use ActiveSupport::EventReporter#unsubscribe
