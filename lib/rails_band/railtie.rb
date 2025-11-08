@@ -12,7 +12,9 @@ module RailsBand
       # NOTE: `ActionDispatch::MiddlewareStack::InstrumentationProxy` will be called
       #       only when `ActionDispatch::MiddlewareStack#build` detects `process_middleware.action_dispatch`
       #       is listened to. So, `attach_to` must be called before Rack middlewares will be loaded.
-      ::ActionDispatch::LogSubscriber.detach_from :action_dispatch if defined?(::ActionDispatch::LogSubscriber)
+      if defined?(::ActionDispatch::LogSubscriber)
+        unsubscribe_default_log_subscriber(::ActionDispatch::LogSubscriber)
+      end
       RailsBand::ActionDispatch::LogSubscriber.attach_to :action_dispatch
     end
 
@@ -20,7 +22,7 @@ module RailsBand
       consumers = app.config.rails_band.consumers
 
       swap = lambda { |old_class, new_class, namespace|
-        old_class.detach_from namespace
+        unsubscribe_default_log_subscriber(old_class)
         new_class.consumers = consumers
         new_class.attach_to namespace
       }
@@ -71,6 +73,30 @@ module RailsBand
         RailsBand::ActionMailbox::LogSubscriber.consumers = consumers
         RailsBand::ActionMailbox::LogSubscriber.attach_to :action_mailbox
       end
+    end
+
+    private
+
+    # Unsubscribe default log subscribers to prevent duplicate logging.
+    # For Rails 8.1+, use ActiveSupport::EventReporter#unsubscribe
+    # For older Rails versions, use the detach_from class method
+    def self.unsubscribe_default_log_subscriber(subscriber_class)
+      if rails_8_1_or_newer?
+        # In Rails 8.1+, log subscribers are registered via ActiveSupport.event_reporter.subscribe
+        # We need to find and unsubscribe the specific subscriber instance
+        ::ActiveSupport.event_reporter.subscribers.each do |subscription|
+          if subscription[:subscriber].is_a?(subscriber_class)
+            ::ActiveSupport.event_reporter.unsubscribe(subscription[:subscriber])
+          end
+        end
+      else
+        # In older Rails versions, use detach_from class method
+        subscriber_class.detach_from subscriber_class.namespace
+      end
+    end
+
+    def self.rails_8_1_or_newer?
+      Rails.gem_version >= Gem::Version.new('8.1.0')
     end
   end
 end
