@@ -12,7 +12,9 @@ module RailsBand
       # NOTE: `ActionDispatch::MiddlewareStack::InstrumentationProxy` will be called
       #       only when `ActionDispatch::MiddlewareStack#build` detects `process_middleware.action_dispatch`
       #       is listened to. So, `attach_to` must be called before Rack middlewares will be loaded.
-      ::ActionDispatch::LogSubscriber.detach_from :action_dispatch if defined?(::ActionDispatch::LogSubscriber)
+      if defined?(::ActionDispatch::LogSubscriber)
+        detach_log_subscriber(::ActionDispatch::LogSubscriber, :action_dispatch)
+      end
       RailsBand::ActionDispatch::LogSubscriber.attach_to :action_dispatch
     end
 
@@ -20,7 +22,7 @@ module RailsBand
       consumers = app.config.rails_band.consumers
 
       swap = lambda { |old_class, new_class, namespace|
-        old_class.detach_from namespace
+        detach_log_subscriber(old_class, namespace)
         new_class.consumers = consumers
         new_class.attach_to namespace
       }
@@ -72,5 +74,19 @@ module RailsBand
         RailsBand::ActionMailbox::LogSubscriber.attach_to :action_mailbox
       end
     end
+
+    # Helper method to detach log subscribers in a way that's compatible with both
+    # Rails < 8.1 (using detach_from) and Rails >= 8.1 (using unsubscribe)
+    def self.detach_log_subscriber(log_subscriber_class, namespace)
+      if log_subscriber_class.respond_to?(:detach_from)
+        # Rails < 8.1: use detach_from method
+        log_subscriber_class.detach_from namespace
+      elsif log_subscriber_class.respond_to?(:unsubscribe)
+        # Rails >= 8.1: use unsubscribe method
+        log_subscriber_class.unsubscribe
+      end
+    end
+
+    private_class_method :detach_log_subscriber
   end
 end
