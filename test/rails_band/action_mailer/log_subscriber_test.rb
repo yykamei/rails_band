@@ -4,7 +4,7 @@ require 'test_helper'
 
 class ActionMailerLogSubscriberTest < ActionDispatch::IntegrationTest
   setup do
-    @mock = Minitest::Mock.new
+    @mock = SimpleMock.new
     @mock.expect(:recv, nil)
     @user = User.create!(name: 'bo', email: 'bo@example.com')
   end
