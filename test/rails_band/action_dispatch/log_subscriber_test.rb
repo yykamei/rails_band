@@ -4,7 +4,7 @@ require 'test_helper'
 
 class ActionDispatchLogSubscriberTest < ActionDispatch::IntegrationTest
   setup do
-    @mock = Minitest::Mock.new
+    @mock = SimpleMock.new
     @mock.expect(:recv, nil)
   end
 

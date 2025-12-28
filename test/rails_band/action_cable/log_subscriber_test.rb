@@ -6,7 +6,7 @@ class ActionCableSubscriberTest < ::ActionCable::Channel::TestCase
   tests ApplicationCable::NiceChannel
 
   setup do
-    @mock = Minitest::Mock.new
+    @mock = SimpleMock.new
     @mock.expect(:recv, nil)
   end
 
