@@ -12,6 +12,7 @@ require 'rails_band/action_controller/event/send_data'
 require 'rails_band/action_controller/event/redirect_to'
 require 'rails_band/action_controller/event/halted_callback'
 require 'rails_band/action_controller/event/unpermitted_parameters'
+require 'rails_band/action_controller/event/rate_limit'
 
 module RailsBand
   module ActionController
@@ -69,6 +70,10 @@ module RailsBand
 
       def unpermitted_parameters(event)
         consumer_of(__method__)&.call(Event::UnpermittedParameters.new(event))
+      end
+
+      def rate_limit(event)
+        consumer_of(__method__)&.call(Event::RateLimit.new(event))
       end
 
       private
