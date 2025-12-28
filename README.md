@@ -69,6 +69,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`redirect_to.action_controller`](https://guides.rubyonrails.org/active_support_instrumentation.html#redirect-to-action-controller)                       | ✅        |
 | [`halted_callback.action_controller`](https://guides.rubyonrails.org/active_support_instrumentation.html#halted-callback-action-controller)               | ✅        |
 | [`unpermitted_parameters.action_controller`](https://guides.rubyonrails.org/active_support_instrumentation.html#unpermitted-parameters-action-controller) | ✅        |
+| [`rate_limit.action_controller`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#rate-limit-action-controller)                     | ✅        |
 
 ### Action Dispatch
 
@@ -115,7 +116,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`cache_write.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-write-active-support)                       | ✅        |
 | [`cache_write_multi.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-write-multi-active-support)       | ✅        |
 | [`cache_increment.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-increment-active-support)           | ✅        |
-| [`cache_decrement.active_support `](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-decrement-active-support)          | ✅        |
+| [`cache_decrement.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-decrement-active-support)           | ✅        |
 | [`cache_delete.active_support`](https://guides.rubyonrails.org/active_support_instrumentation.html#cache-delete-active-support)                     | ✅        |
 | [`cache_delete_multi.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-delete-multi-active-support)     | ✅        |
 | [`cache_delete_matched.active_support`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#cache-delete-matched-active-support) | ✅        |
