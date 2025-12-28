@@ -27,4 +27,5 @@ Rails.application.routes.draw do
 
   get 'old_users', to: redirect('/users')
   get 'special_stream', to: 'special_stream#index'
+  get 'rate_limited', to: 'rate_limited#limited'
 end
