@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-if Gem::Version.new(Rails.version) >= Gem::Version.new('8.0')
+if Gem::Version.new(Rails.version) >= Gem::Version.new('7.2')
   class RateLimitTest < ActionDispatch::IntegrationTest
     setup do
       @event = nil
