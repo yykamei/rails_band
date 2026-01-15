@@ -52,6 +52,8 @@ jobs:
             rails: 'edge'
           - ruby: '3.1'
             rails: 'edge'
+          - ruby: '3.2'
+            rails: 'edge'
           - ruby: '3.4'
             rails: '6.0'
           - ruby: '3.4'
