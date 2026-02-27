@@ -24,8 +24,8 @@ module RailsBand
         name: @name, time: @time, end: @end, transaction_id: @transaction_id,
         cpu_time: @cpu_time, idle_time: @idle_time, allocations: @allocations, duration: @duration
       }.merge!(
-        public_methods(false).reject { |meth| non_hash_keys.include?(meth) }.each_with_object({}) do |meth, h|
-          h[meth] = public_send(meth)
+        public_methods(false).reject { |meth| non_hash_keys.include?(meth) }.to_h do |meth|
+          [meth, public_send(meth)]
         end
       )
     end
