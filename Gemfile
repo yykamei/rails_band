@@ -12,5 +12,6 @@ group :development do
   gem 'mini_magick'
   gem 'rubocop', require: false
   gem 'rubocop-minitest', require: false
+  gem 'ruby-vips', '>= 2.0.17', '< 3'
   gem 'sqlite3', '~> 2.0'
 end
