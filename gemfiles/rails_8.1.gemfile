@@ -3,6 +3,11 @@
 source 'https://rubygems.org'
 
 gem 'image_processing', '~> 2.0'
+# json 3.0 removed the positional options argument of JSON.parse, which
+# ActiveSupport::JSON.decode in activesupport <= 8.1.3.1 still uses.
+# Remove this pin once a Rails 8.1.x release with the fix ships.
+# https://github.com/rails/rails/pull/58601
+gem 'json', '< 3'
 gem 'mini_magick'
 gem 'minitest', '~> 5.0'
 gem 'puma'
