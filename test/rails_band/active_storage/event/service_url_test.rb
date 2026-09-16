@@ -3,6 +3,8 @@
 require 'test_helper'
 
 class ServiceUrlTest < ActionDispatch::IntegrationTest
+  include CommonBaseEventTests
+
   setup do
     @event = nil
     RailsBand::ActiveStorage::LogSubscriber.consumers = {
@@ -10,52 +12,12 @@ class ServiceUrlTest < ActionDispatch::IntegrationTest
     }
   end
 
-  test 'returns name' do
-    post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-
-    assert_equal 'service_url.active_storage', @event.name
+  def event_name
+    'service_url.active_storage'
   end
 
-  test 'returns time' do
+  def trigger_event
     post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-
-    assert_instance_of Float, @event.time
-  end
-
-  test 'returns end' do
-    post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-
-    assert_instance_of Float, @event.end
-  end
-
-  test 'returns transaction_id' do
-    post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-
-    assert_instance_of String, @event.transaction_id
-  end
-
-  test 'returns cpu_time' do
-    post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-
-    assert_instance_of Float, @event.cpu_time
-  end
-
-  test 'returns idle_time' do
-    post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-
-    assert_instance_of Float, @event.idle_time
-  end
-
-  test 'returns allocations' do
-    post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-
-    assert_instance_of Integer, @event.allocations
-  end
-
-  test 'returns duration' do
-    post '/teams', params: { team: { name: 'A', avatar: fixture_file_upload('test.png') } }
-
-    assert_instance_of Float, @event.duration
   end
 
   test 'calls #to_h' do

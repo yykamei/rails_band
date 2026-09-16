@@ -4,6 +4,8 @@ require 'test_helper'
 
 if Gem::Version.new(Rails.version) >= Gem::Version.new('7.2')
   class StartTransactionTest < ActionDispatch::IntegrationTest
+    include CommonBaseEventTests
+
     setup do
       @event = nil
       RailsBand::ActiveRecord::LogSubscriber.consumers = {
@@ -12,52 +14,12 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('7.2')
       @user = User.create!(name: 'foo', email: 'foo@example.com')
     end
 
-    test 'returns name' do
-      User.transaction { @user.update!(name: 'bar') }
-
-      assert_equal 'start_transaction.active_record', @event.name
+    def event_name
+      'start_transaction.active_record'
     end
 
-    test 'returns time' do
+    def trigger_event
       User.transaction { @user.update!(name: 'bar') }
-
-      assert_instance_of Float, @event.time
-    end
-
-    test 'returns end' do
-      User.transaction { @user.update!(name: 'bar') }
-
-      assert_instance_of Float, @event.end
-    end
-
-    test 'returns transaction_id' do
-      User.transaction { @user.update!(name: 'bar') }
-
-      assert_instance_of String, @event.transaction_id
-    end
-
-    test 'returns cpu_time' do
-      User.transaction { @user.update!(name: 'bar') }
-
-      assert_instance_of Float, @event.cpu_time
-    end
-
-    test 'returns idle_time' do
-      User.transaction { @user.update!(name: 'bar') }
-
-      assert_instance_of Float, @event.idle_time
-    end
-
-    test 'returns allocations' do
-      User.transaction { @user.update!(name: 'bar') }
-
-      assert_instance_of Integer, @event.allocations
-    end
-
-    test 'returns duration' do
-      User.transaction { @user.update!(name: 'bar') }
-
-      assert_instance_of Float, @event.duration
     end
 
     test 'calls #to_h' do

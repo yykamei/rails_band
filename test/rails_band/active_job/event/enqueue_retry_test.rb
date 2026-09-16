@@ -3,6 +3,8 @@
 require 'test_helper'
 
 class EnqueueRetryTest < ActionDispatch::IntegrationTest
+  include CommonBaseEventTests
+
   setup do
     @event = nil
     RailsBand::ActiveJob::LogSubscriber.consumers = {
@@ -10,52 +12,12 @@ class EnqueueRetryTest < ActionDispatch::IntegrationTest
     }
   end
 
-  test 'returns name' do
-    FlakyJob.perform_now
-
-    assert_equal 'enqueue_retry.active_job', @event.name
+  def event_name
+    'enqueue_retry.active_job'
   end
 
-  test 'returns time' do
+  def trigger_event
     FlakyJob.perform_now
-
-    assert_instance_of Float, @event.time
-  end
-
-  test 'returns end' do
-    FlakyJob.perform_now
-
-    assert_instance_of Float, @event.end
-  end
-
-  test 'returns transaction_id' do
-    FlakyJob.perform_now
-
-    assert_instance_of String, @event.transaction_id
-  end
-
-  test 'returns cpu_time' do
-    FlakyJob.perform_now
-
-    assert_instance_of Float, @event.cpu_time
-  end
-
-  test 'returns idle_time' do
-    FlakyJob.perform_now
-
-    assert_instance_of Float, @event.idle_time
-  end
-
-  test 'returns allocations' do
-    FlakyJob.perform_now
-
-    assert_instance_of Integer, @event.allocations
-  end
-
-  test 'returns duration' do
-    FlakyJob.perform_now
-
-    assert_instance_of Float, @event.duration
   end
 
   test 'calls #to_h' do
