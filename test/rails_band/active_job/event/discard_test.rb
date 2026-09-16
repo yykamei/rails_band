@@ -3,6 +3,8 @@
 require 'test_helper'
 
 class DiscardTest < ActionDispatch::IntegrationTest
+  include CommonBaseEventTests
+
   setup do
     @event = nil
     RailsBand::ActiveJob::LogSubscriber.consumers = {
@@ -10,67 +12,17 @@ class DiscardTest < ActionDispatch::IntegrationTest
     }
   end
 
-  test 'returns name' do
-    perform_enqueued_jobs do
-      DiscardJob.perform_later
-    rescue DiscardJob::Error
-      assert_equal 'discard.active_job', @event.name
-    end
+  def event_name
+    'discard.active_job'
   end
 
-  test 'returns time' do
+  def trigger_event
+    # Job-related Error may raise while the enqueued job runs; swallow it so that
+    # the assertions shared via CommonBaseEventTests run after this trigger.
     perform_enqueued_jobs do
       DiscardJob.perform_later
     rescue DiscardJob::Error
-      assert_instance_of Float, @event.time
-    end
-  end
-
-  test 'returns end' do
-    perform_enqueued_jobs do
-      DiscardJob.perform_later
-    rescue DiscardJob::Error
-      assert_instance_of Float, @event.end
-    end
-  end
-
-  test 'returns transaction_id' do
-    perform_enqueued_jobs do
-      DiscardJob.perform_later
-    rescue DiscardJob::Error
-      assert_instance_of String, @event.transaction_id
-    end
-  end
-
-  test 'returns cpu_time' do
-    perform_enqueued_jobs do
-      DiscardJob.perform_later
-    rescue DiscardJob::Error
-      assert_instance_of Float, @event.cpu_time
-    end
-  end
-
-  test 'returns idle_time' do
-    perform_enqueued_jobs do
-      DiscardJob.perform_later
-    rescue DiscardJob::Error
-      assert_instance_of Float, @event.idle_time
-    end
-  end
-
-  test 'returns allocations' do
-    perform_enqueued_jobs do
-      DiscardJob.perform_later
-    rescue DiscardJob::Error
-      assert_instance_of Integer, @event.allocations
-    end
-  end
-
-  test 'returns duration' do
-    perform_enqueued_jobs do
-      DiscardJob.perform_later
-    rescue DiscardJob::Error
-      assert_instance_of Float, @event.duration
+      nil
     end
   end
 

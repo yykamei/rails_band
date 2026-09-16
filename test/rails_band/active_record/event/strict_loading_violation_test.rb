@@ -4,6 +4,8 @@ require 'test_helper'
 
 if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
   class StrictLoadingViolationTest < ActionDispatch::IntegrationTest
+    include CommonBaseEventTests
+
     setup do
       @event = nil
       RailsBand::ActiveRecord::LogSubscriber.consumers = {
@@ -22,60 +24,20 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('6.1')
       Note.create!(user: @user, title: 'g', body: 'G!')
     end
 
+    def event_name
+      'strict_loading_violation.active_record'
+    end
+
+    def trigger_event
+      get "/users/#{@user.id}/notes"
+    end
+
     teardown do
       if ActiveRecord.respond_to?(:action_on_strict_loading_violation)
         ActiveRecord.action_on_strict_loading_violation = @old_ar_config
       else
         ActiveRecord::Base.action_on_strict_loading_violation = @old_ar_config
       end
-    end
-
-    test 'returns name' do
-      get "/users/#{@user.id}/notes"
-
-      assert_equal 'strict_loading_violation.active_record', @event.name
-    end
-
-    test 'returns time' do
-      get "/users/#{@user.id}/notes"
-
-      assert_instance_of Float, @event.time
-    end
-
-    test 'returns end' do
-      get "/users/#{@user.id}/notes"
-
-      assert_instance_of Float, @event.end
-    end
-
-    test 'returns transaction_id' do
-      get "/users/#{@user.id}/notes"
-
-      assert_instance_of String, @event.transaction_id
-    end
-
-    test 'returns cpu_time' do
-      get "/users/#{@user.id}/notes"
-
-      assert_instance_of Float, @event.cpu_time
-    end
-
-    test 'returns idle_time' do
-      get "/users/#{@user.id}/notes"
-
-      assert_instance_of Float, @event.idle_time
-    end
-
-    test 'returns allocations' do
-      get "/users/#{@user.id}/notes"
-
-      assert_instance_of Integer, @event.allocations
-    end
-
-    test 'returns duration' do
-      get "/users/#{@user.id}/notes"
-
-      assert_instance_of Float, @event.duration
     end
 
     test 'calls #to_h' do

@@ -4,6 +4,8 @@ require 'test_helper'
 
 if Gem::Version.new(Rails.version) >= Gem::Version.new('8.0')
   class RateLimitTest < ActionDispatch::IntegrationTest
+    include CommonBaseEventTests
+
     setup do
       @event = nil
       RailsBand::ActionController::LogSubscriber.consumers = {
@@ -12,52 +14,12 @@ if Gem::Version.new(Rails.version) >= Gem::Version.new('8.0')
       RateLimitedController.cache_store.clear
     end
 
-    test 'returns name' do
-      trigger_rate_limit
-
-      assert_equal 'rate_limit.action_controller', @event.name
+    def event_name
+      'rate_limit.action_controller'
     end
 
-    test 'returns time' do
+    def trigger_event
       trigger_rate_limit
-
-      assert_instance_of Float, @event.time
-    end
-
-    test 'returns end' do
-      trigger_rate_limit
-
-      assert_instance_of Float, @event.end
-    end
-
-    test 'returns transaction_id' do
-      trigger_rate_limit
-
-      assert_instance_of String, @event.transaction_id
-    end
-
-    test 'returns cpu_time' do
-      trigger_rate_limit
-
-      assert_instance_of Float, @event.cpu_time
-    end
-
-    test 'returns idle_time' do
-      trigger_rate_limit
-
-      assert_instance_of Float, @event.idle_time
-    end
-
-    test 'returns allocations' do
-      trigger_rate_limit
-
-      assert_instance_of Integer, @event.allocations
-    end
-
-    test 'returns duration' do
-      trigger_rate_limit
-
-      assert_instance_of Float, @event.duration
     end
 
     test 'calls #to_h' do

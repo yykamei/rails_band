@@ -3,6 +3,8 @@
 require 'test_helper'
 
 class TransmitSubscriptionRejectionTest < ::ActionCable::Channel::TestCase
+  include CommonBaseEventTests
+
   tests ApplicationCable::NiceChannel
 
   setup do
@@ -12,52 +14,12 @@ class TransmitSubscriptionRejectionTest < ::ActionCable::Channel::TestCase
     }
   end
 
-  test 'returns name' do
-    subscribe number: '-3'
-
-    assert_equal 'transmit_subscription_rejection.action_cable', @event.name
+  def event_name
+    'transmit_subscription_rejection.action_cable'
   end
 
-  test 'returns time' do
+  def trigger_event
     subscribe number: '-3'
-
-    assert_instance_of Float, @event.time
-  end
-
-  test 'returns end' do
-    subscribe number: '-3'
-
-    assert_instance_of Float, @event.end
-  end
-
-  test 'returns transaction_id' do
-    subscribe number: '-3'
-
-    assert_instance_of String, @event.transaction_id
-  end
-
-  test 'returns cpu_time' do
-    subscribe number: '-3'
-
-    assert_instance_of Float, @event.cpu_time
-  end
-
-  test 'returns idle_time' do
-    subscribe number: '-3'
-
-    assert_instance_of Float, @event.idle_time
-  end
-
-  test 'returns allocations' do
-    subscribe number: '-3'
-
-    assert_instance_of Integer, @event.allocations
-  end
-
-  test 'returns duration' do
-    subscribe number: '-3'
-
-    assert_instance_of Float, @event.duration
   end
 
   test 'calls #to_h' do

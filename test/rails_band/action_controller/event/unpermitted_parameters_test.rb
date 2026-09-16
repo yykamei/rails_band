@@ -3,6 +3,8 @@
 require 'test_helper'
 
 class UnpermittedParametersTest < ActionDispatch::IntegrationTest
+  include CommonBaseEventTests
+
   setup do
     @event = nil
     RailsBand::ActionController::LogSubscriber.consumers = {
@@ -11,52 +13,12 @@ class UnpermittedParametersTest < ActionDispatch::IntegrationTest
     @user = User.create!(name: 'foo', email: 'foo@example.com')
   end
 
-  test 'returns name' do
-    patch "/users/#{@user.id}", params: { name: 'foo!', nickname: 'F', login_shell: 'zsh' }
-
-    assert_equal 'unpermitted_parameters.action_controller', @event.name
+  def event_name
+    'unpermitted_parameters.action_controller'
   end
 
-  test 'returns time' do
+  def trigger_event
     patch "/users/#{@user.id}", params: { name: 'foo!', nickname: 'F', login_shell: 'zsh' }
-
-    assert_instance_of Float, @event.time
-  end
-
-  test 'returns end' do
-    patch "/users/#{@user.id}", params: { name: 'foo!', nickname: 'F', login_shell: 'zsh' }
-
-    assert_instance_of Float, @event.end
-  end
-
-  test 'returns transaction_id' do
-    patch "/users/#{@user.id}", params: { name: 'foo!', nickname: 'F', login_shell: 'zsh' }
-
-    assert_instance_of String, @event.transaction_id
-  end
-
-  test 'returns cpu_time' do
-    patch "/users/#{@user.id}", params: { name: 'foo!', nickname: 'F', login_shell: 'zsh' }
-
-    assert_instance_of Float, @event.cpu_time
-  end
-
-  test 'returns idle_time' do
-    patch "/users/#{@user.id}", params: { name: 'foo!', nickname: 'F', login_shell: 'zsh' }
-
-    assert_instance_of Float, @event.idle_time
-  end
-
-  test 'returns allocations' do
-    patch "/users/#{@user.id}", params: { name: 'foo!', nickname: 'F', login_shell: 'zsh' }
-
-    assert_instance_of Integer, @event.allocations
-  end
-
-  test 'returns duration' do
-    patch "/users/#{@user.id}", params: { name: 'foo!', nickname: 'F', login_shell: 'zsh' }
-
-    assert_instance_of Float, @event.duration
   end
 
   test 'calls #to_h' do
