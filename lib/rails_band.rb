@@ -58,4 +58,9 @@ module RailsBand
   module ActionMailbox
     autoload :LogSubscriber, 'rails_band/action_mailbox/log_subscriber'
   end
+
+  # RailsBand::Railties is responsible for subscribing notifications from Railties.
+  module Railties
+    autoload :LogSubscriber, 'rails_band/railties/log_subscriber'
+  end
 end
