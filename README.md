@@ -97,6 +97,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`instantiation.active_record`](https://guides.rubyonrails.org/active_support_instrumentation.html#instantiation-active-record)             | ✅        |
 | [`start_transaction.active_record`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#start-transaction-active-record) | ✅        |
 | [`transaction.active_record`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#transaction-active-record)             | ✅        |
+| [`deprecated_association.active_record`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#deprecated-association-active-record) | ✅        |
 
 ### Action Mailer
 

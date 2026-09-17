@@ -5,6 +5,7 @@ require 'rails_band/active_record/event/instantiation'
 require 'rails_band/active_record/event/strict_loading_violation'
 require 'rails_band/active_record/event/start_transaction'
 require 'rails_band/active_record/event/transaction'
+require 'rails_band/active_record/event/deprecated_association'
 
 module RailsBand
   module ActiveRecord
@@ -30,6 +31,10 @@ module RailsBand
 
       def transaction(event)
         consumer_of(__method__)&.call(Event::Transaction.new(event))
+      end
+
+      def deprecated_association(event)
+        consumer_of(__method__)&.call(Event::DeprecatedAssociation.new(event))
       end
 
       private
