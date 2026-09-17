@@ -8,6 +8,11 @@ require 'rails_band/active_job/event/perform_start'
 require 'rails_band/active_job/event/perform'
 require 'rails_band/active_job/event/retry_stopped'
 require 'rails_band/active_job/event/discard'
+require 'rails_band/active_job/event/interrupt'
+require 'rails_band/active_job/event/resume'
+require 'rails_band/active_job/event/step'
+require 'rails_band/active_job/event/step_skipped'
+require 'rails_band/active_job/event/step_started'
 
 module RailsBand
   module ActiveJob
@@ -45,6 +50,26 @@ module RailsBand
 
       def enqueue_all(event)
         consumer_of(__method__)&.call(Event::EnqueueAll.new(event))
+      end
+
+      def interrupt(event)
+        consumer_of(__method__)&.call(Event::Interrupt.new(event))
+      end
+
+      def resume(event)
+        consumer_of(__method__)&.call(Event::Resume.new(event))
+      end
+
+      def step(event)
+        consumer_of(__method__)&.call(Event::Step.new(event))
+      end
+
+      def step_skipped(event)
+        consumer_of(__method__)&.call(Event::StepSkipped.new(event))
+      end
+
+      def step_started(event)
+        consumer_of(__method__)&.call(Event::StepStarted.new(event))
       end
 
       private
