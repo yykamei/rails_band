@@ -180,7 +180,7 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 
 | Event name                                                                                                                                    | Supported |
 | --------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| [`load_config_initializer.railties`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#load-config-initializer-railties) |           |
+| [`load_config_initializer.railties`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#load-config-initializer-railties) | ✅        |
 
 ### Rails
 

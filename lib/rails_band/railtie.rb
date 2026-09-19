@@ -8,7 +8,7 @@ module RailsBand
   class Railtie < ::Rails::Railtie
     config.rails_band = Configuration.new
 
-    config.before_initialize do
+    config.before_initialize do |app|
       # NOTE: `ActionDispatch::MiddlewareStack::InstrumentationProxy` will be called
       #       only when `ActionDispatch::MiddlewareStack#build` detects `process_middleware.action_dispatch`
       #       is listened to. So, `attach_to` must be called before Rack middlewares will be loaded.
@@ -16,6 +16,12 @@ module RailsBand
         detach_log_subscriber(::ActionDispatch::LogSubscriber, :action_dispatch)
       end
       RailsBand::ActionDispatch::LogSubscriber.attach_to :action_dispatch
+
+      # NOTE: `load_config_initializer.railties` is emitted while Rails loads
+      #       config/initializers/*. So, the subscriber must be attached before
+      #       Rails loads them.
+      RailsBand::Railties::LogSubscriber.consumers = app.config.rails_band.consumers
+      RailsBand::Railties::LogSubscriber.attach_to :railties
     end
 
     config.after_initialize do |app|
@@ -57,6 +63,8 @@ module RailsBand
 
       RailsBand::DeprecationSubscriber.consumers = consumers
       RailsBand::DeprecationSubscriber.attach_to :rails
+
+      RailsBand::Railties::LogSubscriber.consumers = consumers
 
       if defined?(::ActiveJob)
         require 'active_job/logging'
