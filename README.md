@@ -143,6 +143,11 @@ These are Rails Instrumentation API hooks supported by this gem so far.
 | [`retry_stopped.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#retry-stopped-active-job) | ✅        |
 | [`discard.active_job`](https://guides.rubyonrails.org/active_support_instrumentation.html#discard-active-job)             | ✅        |
 | [`enqueue_all.active_job`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#enqueue-all-active-job) | ✅        |
+| [`interrupt.active_job`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#interrupt-active-job) | ✅        |
+| [`resume.active_job`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#resume-active-job) | ✅        |
+| [`step.active_job`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#step-active-job) | ✅        |
+| [`step_skipped.active_job`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#step-skipped-active-job) | ✅        |
+| [`step_started.active_job`](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#step-started-active-job) | ✅        |
 
 ### Action Cable
 
