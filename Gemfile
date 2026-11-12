@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'minitest', '~> 6.0.1'
+gem 'minitest', '~> 6.1.0'
 gem 'rails', github: 'rails/rails'
 
 group :development do
